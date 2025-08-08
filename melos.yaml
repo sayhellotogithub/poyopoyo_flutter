@@ -1,0 +1,7 @@
+name: poyopoyo_flutter
+packages:
+  - packages/**
+scripts:
+  analyze: dart analyze .
+  test: flutter test
+  build: melos exec -- flutter pub run build_runner build --delete-conflicting-outputs
