@@ -9,3 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.6.1
+  go_router: ^16.1.0
+
+  theme:
+    path: ../core/theme
+  plugin:
+    path: ../core/plugin
+
+  settings:
+    path: ../features/settings

@@ -1,0 +1,10 @@
+# melos_managed_dependency_overrides: plugin,theme,settings,widgets
+dependency_overrides:
+  plugin:
+    path: ../core/plugin
+  settings:
+    path: ../features/settings
+  theme:
+    path: ../core/theme
+  widgets:
+    path: ../shared/widgets

@@ -1,5 +1,5 @@
-name: core
-description: core module
+name: theme
+description: theme module
 version: 0.0.1
 publish_to: "none"
 
@@ -11,3 +11,4 @@ dependencies:
     sdk: flutter
 
   flutter_riverpod: ^2.6.1
+  shared_preferences: ^2.5.3
