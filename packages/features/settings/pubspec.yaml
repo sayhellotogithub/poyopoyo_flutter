@@ -1,5 +1,5 @@
-name: core
-description: core module
+name: settings
+description: settings module
 version: 0.0.1
 publish_to: "none"
 
@@ -9,5 +9,3 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  flutter_riverpod: ^2.6.1
