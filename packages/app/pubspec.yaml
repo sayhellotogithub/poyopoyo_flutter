@@ -16,6 +16,14 @@ dependencies:
     path: ../core/theme
   plugin:
     path: ../core/plugin
+  contracts:
+    path: ../core/contracts
+  di:
+    path: ../core/di
+  widgets:
+    path: ../shared/widgets
 
   settings:
     path: ../features/settings
+  auth:
+    path: ../features/auth

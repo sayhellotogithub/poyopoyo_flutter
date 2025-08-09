@@ -1,5 +1,5 @@
-name: auth
-description: auth module
+name: di
+description: di module
 version: 0.0.1
 publish_to: "none"
 
@@ -9,11 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   contracts:
-    path: ../../core/contracts
-  di:
-    path: ../../core/di
+    path: ../contracts
   plugin:
-    path: ../../core/plugin
+    path: ../plugin
   flutter_riverpod: ^2.6.1
   go_router: ^16.1.0

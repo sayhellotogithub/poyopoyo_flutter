@@ -1,7 +1,8 @@
 // entry point
+import 'package:auth/presentation/router/auth_module.dart';
+import 'package:di/bootstrap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:plugin/module_interface.dart';
 import 'package:settings/presentation/router/settings_module.dart';
 import 'package:theme/app_theme.dart';
@@ -20,17 +21,11 @@ class PoyopoyoApp extends ConsumerWidget {
       data: (themeMode) {
         final modules = <AppModule>[
           SettingsModule(),
+          AuthModule(),
         ];
 
-        final router = GoRouter(
-          routes: [
-            for (final m in modules) ...m.routes,
-          ],
-        );
-
-        final overrides = [
-          for (final m in modules) ...m.overrides,
-        ];
+        final bootstrap = AppBootstrap(modules);
+        final (router, overrides) = bootstrap.build();
 
         return ProviderScope(
           overrides: overrides,
