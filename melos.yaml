@@ -4,4 +4,37 @@ packages:
 scripts:
   analyze: dart analyze .
   test: flutter test
-  build: melos exec -- flutter pub run build_runner build --delete-conflicting-outputs
+  # 仅对“自 HEAD 以来有改动且依赖 build_runner 的包”跑一次
+#  build: >
+#    melos exec -c 6 --fail-fast --diff=HEAD --depends-on=build_runner --
+#    flutter pub run build_runner build --delete-conflicting-outputs
+#
+#  # 全量生成（所有依赖 build_runner 的包）
+#  build:all: >
+#    melos exec -c 6 --fail-fast --depends-on=build_runner --
+#    flutter pub run build_runner build --delete-conflicting-outputs
+#
+#  # 长驻监听（开发期）
+#  watch: >
+#    melos exec --depends-on=build_runner --
+#    flutter pub run build_runner watch --delete-conflicting-outputs
+#  rebuild:
+#    run: |
+#      melos exec --depends-on=build_runner -- "dart run build_runner clean"
+#      melos exec --depends-on=build_runner -- "dart run build_runner build --delete-conflicting-outputs"
+
+  # —— 依赖关系有先后：dto 先生成 → api 再生成 → 其它（如 auth…）
+  gen:dto:
+    run: melos exec --scope="dto" -- "dart run build_runner build --delete-conflicting-outputs"
+
+  gen:api:
+    run: melos exec --scope="api" -- "dart run build_runner build --delete-conflicting-outputs"
+
+  gen:rest:
+    run: melos exec --scope="auth,network_dio_retrofit" -- "dart run build_runner build --delete-conflicting-outputs"
+
+  gen:all:
+    run: |
+      melos run gen:dto
+      melos run gen:api
+      melos run gen:rest

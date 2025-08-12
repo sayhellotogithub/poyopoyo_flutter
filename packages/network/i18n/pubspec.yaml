@@ -1,5 +1,5 @@
-name: contracts
-description: contracts module
+name: i18n
+description: i18n module
 version: 0.0.1
 publish_to: "none"
 

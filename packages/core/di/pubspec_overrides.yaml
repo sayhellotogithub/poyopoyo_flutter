@@ -1,0 +1,16 @@
+# melos_managed_dependency_overrides: contracts,plugin,data,domain,network_core,network_dio,network_dio_retrofit
+dependency_overrides:
+  contracts:
+    path: ../contracts
+  data:
+    path: ../../shared/data
+  domain:
+    path: ../../shared/domain
+  network_core:
+    path: ../../network/core
+  network_dio:
+    path: ../../network/network_dio
+  network_dio_retrofit:
+    path: ../../network/network_dio_retrofit
+  plugin:
+    path: ../plugin

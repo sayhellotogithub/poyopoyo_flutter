@@ -1,0 +1,16 @@
+name: data
+description: data module
+version: 0.0.1
+publish_to: "none"
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  network_core:
+    path: ../../network/core
+  domain:
+    path: ../../shared/domain
+
+dev_dependencies:
+  test: any

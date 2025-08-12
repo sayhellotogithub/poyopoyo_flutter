@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: domain,network_core
+dependency_overrides:
+  domain:
+    path: ../domain
+  network_core:
+    path: ../../network/core

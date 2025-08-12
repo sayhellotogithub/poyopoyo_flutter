@@ -1,0 +1,7 @@
+name: network_core
+description: network module
+version: 0.0.1
+publish_to: "none"
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"

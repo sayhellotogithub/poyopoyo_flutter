@@ -1,5 +1,7 @@
-# melos_managed_dependency_overrides: contracts,di,plugin,theme,widgets,data,domain,network_core,network_dio,network_dio_retrofit
+# melos_managed_dependency_overrides: api,contracts,data,di,domain,dto,network_core,network_dio,network_dio_retrofit,plugin
 dependency_overrides:
+  api:
+    path: ../../shared/api
   contracts:
     path: ../../core/contracts
   data:
@@ -8,6 +10,8 @@ dependency_overrides:
     path: ../../core/di
   domain:
     path: ../../shared/domain
+  dto:
+    path: ../../shared/dto
   network_core:
     path: ../../network/core
   network_dio:
@@ -16,7 +20,3 @@ dependency_overrides:
     path: ../../network/network_dio_retrofit
   plugin:
     path: ../../core/plugin
-  theme:
-    path: ../../core/theme
-  widgets:
-    path: ../../shared/widgets

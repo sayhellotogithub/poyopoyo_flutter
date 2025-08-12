@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: data,domain,network_core
+dependency_overrides:
+  data:
+    path: ../../shared/data
+  domain:
+    path: ../../shared/domain
+  network_core:
+    path: ../core
