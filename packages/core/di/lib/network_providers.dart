@@ -9,7 +9,8 @@ import 'package:network_core/core.dart';
 import 'package:network_dio/network_dio.dart';
 
 final baseUrlProvider = Provider<String>((_) => 'https://api.example.com');
-//todo
+final authUrlProvider = Provider<String>((_) => 'https://auth.example.com');
+
 final dioProvider = Provider<Dio>((ref) {
   final base = ref.watch(baseUrlProvider);
   final dio = Dio(BaseOptions(

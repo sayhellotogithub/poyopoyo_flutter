@@ -17,6 +17,8 @@ dependencies:
     path: ../../core/plugin
   network_core:
     path: ../../network/core
+  network_dio_retrofit:
+    path: ../../network/network_dio_retrofit
   dto:
     path: ../../shared/dto
   api:

@@ -9,6 +9,7 @@ import 'package:di/network_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/api/auth_api.dart';
+import '../data/api/auth_api_v2.dart';
 import '../data/repositories/auth_repository_impl.dart';
 import '../data/repositories/test_repository_impl.dart';
 import '../data/repositories/test_repository_v2_impl.dart';
@@ -27,6 +28,12 @@ final userApiProvider = Provider<UserApi>((ref) {
 final authApiProvider = Provider<AuthApi>((ref) {
   final client = ref.read(dioProvider);
   return AuthApi(client);
+});
+
+final authApiProviderV2 = Provider<AuthApiV2>((ref) {
+  final client = ref.read(dioProvider);
+  final baseUrl = ref.read(authUrlProvider);
+  return AuthApiV2(client, baseUrl: baseUrl);
 });
 
 final testRepositoryProvider = Provider<ITestRepository>((ref) {

@@ -3,8 +3,7 @@
 // Date: 2025/08/12
 // Description:
 // -------------------------------------------------------------------
-import 'package:domain/failure.dart';
-import 'package:domain/types.dart';
+import 'package:domain/domain.dart';
 import 'package:network_core/core.dart';
 
 AppResult<T> classifyEnvelope<T>(
@@ -19,8 +18,8 @@ AppResult<T> classifyEnvelope<T>(
         return Ok<T, Failure>(mapData(body['data']));
       } catch (e) {
         return Err<T, Failure>(BizFailure(
-          code: 'MALFORMED_DATA',
-          message: '数据结构不符合预期: $e',
+          code: BizCodes.businessError,
+          message: '$e',
           httpStatus: status,
           extra: {'raw': body},
         ));
@@ -28,10 +27,10 @@ AppResult<T> classifyEnvelope<T>(
     }
     final code = (body is Map && body['code'] is String)
         ? body['code'] as String
-        : 'BUSINESS_ERROR';
+        : BizCodes.businessError;
     final msg = (body is Map && body['message'] is String)
         ? body['message'] as String
-        : '业务处理失败';
+        : '';
     return Err<T, Failure>(BizFailure(
         code: code, message: msg, httpStatus: status, extra: {'raw': body}));
   }
@@ -40,8 +39,8 @@ AppResult<T> classifyEnvelope<T>(
   if (status == 401)
     return Err<T, Failure>(NetworkFailure(const NetUnauthorized()));
   if (body is Map && (body['code'] != null || body['message'] != null)) {
-    final code = (body['code'] ?? 'BUSINESS_ERROR').toString();
-    final msg = (body['message'] ?? '业务处理失败').toString();
+    final code = (body['code'] ?? BizCodes.businessError).toString();
+    final msg = (body['message'] ?? '').toString();
     return Err<T, Failure>(BizFailure(
         code: code, message: msg, httpStatus: status, extra: {'raw': body}));
   }

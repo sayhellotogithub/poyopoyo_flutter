@@ -5,7 +5,7 @@
 // -------------------------------------------------------------------
 import 'package:auth/data/mapper/user_mapper.dart';
 import 'package:data/common/api_decoder.dart';
-import 'package:domain/types.dart';
+import 'package:domain/domain.dart';
 import 'package:dto/dto.dart';
 import 'package:network_core/core.dart';
 

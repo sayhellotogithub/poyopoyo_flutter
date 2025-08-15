@@ -4,7 +4,7 @@
 // Description:
 // -------------------------------------------------------------------
 import 'package:data/common/envelope_classifier.dart';
-import 'package:domain/types.dart';
+import 'package:domain/domain.dart';
 import 'package:retrofit/retrofit.dart';
 
 AppResult<T> fromHttpResponse<T>(

@@ -3,14 +3,12 @@
 // Date: 2025/08/12
 // Description:
 // -------------------------------------------------------------------
-// data/common/api_decoder.dart
 import 'dart:convert';
 
-import 'package:domain/failure.dart';
-import 'package:domain/types.dart';
+import 'package:domain/domain.dart';
 import 'package:network_core/core.dart';
 
-import 'envelope_classifier.dart'; // 上面定义的 Failure
+import 'envelope_classifier.dart';
 
 /// 把 NetResult<ResponseBody> -> AppResult<T>
 /// 约定：200 且 success=true => 成功
