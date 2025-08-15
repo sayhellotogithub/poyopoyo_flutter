@@ -5,7 +5,7 @@
 // -------------------------------------------------------------------
 import 'package:dio/dio.dart';
 
-// retry_interceptor.dart（指数退避，遇到网络/5xx重试）
+// 指数退避，遇到网络/5xx重试
 class RetryInterceptor extends Interceptor {
   final int maxAttempts;
 

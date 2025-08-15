@@ -3,15 +3,13 @@
 // Date: 2025/08/12
 // Description:
 // -------------------------------------------------------------------
-import 'dart:convert';
-import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:network_core/core.dart';
 
+import 'dio_util.dart';
 import 'model/token_provider.dart';
 
+@deprecated
 class DioClient implements INetworkClient {
   final Dio _dio;
   final TokenProvider? _token;
@@ -37,10 +35,10 @@ class DioClient implements INetworkClient {
       return Ok(NetResponseBody(
         status: resp.statusCode ?? 0,
         headers: resp.headers.map.map((k, v) => MapEntry(k, v.join(','))),
-        bytes: _asBytes(resp.data),
+        bytes: DioUtil.asBytes(resp.data),
       ));
     } on DioException catch (e) {
-      return Err(_mapDioError(e));
+      return Err(DioUtil.mapDioError(e));
     } catch (e) {
       return Err(NetUnknown(e));
     }
@@ -62,28 +60,5 @@ class DioClient implements INetworkClient {
       if (t != null) h['Authorization'] = 'Bearer $t';
     }
     return h;
-  }
-
-  NetFailure _mapDioError(DioException e) {
-    if (e.type == DioExceptionType.cancel) return NetCanceled();
-    if (e.type == DioExceptionType.connectionTimeout ||
-        e.type == DioExceptionType.receiveTimeout ||
-        e.type == DioExceptionType.sendTimeout) {
-      return NetTimeout();
-    }
-    if (e.type == DioExceptionType.badResponse) {
-      final status = e.response?.statusCode ?? 0;
-      if (status == 0) return NetUnknown(e);
-      if (status == 401) return NetUnauthorized();
-      return NetHttpError(status, message: e.response?.data?.toString());
-    }
-    if (e.error is SocketException) return NetNoConnection();
-    return NetUnknown(e);
-  }
-
-  Uint8List _asBytes(dynamic data) {
-    if (data is Uint8List) return data;
-    if (data is String) return Uint8List.fromList(utf8.encode(data));
-    return Uint8List.fromList(utf8.encode(jsonEncode(data)));
   }
 }

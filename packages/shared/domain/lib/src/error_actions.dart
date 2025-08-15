@@ -114,27 +114,3 @@ ActionDecision _decideNetwork(
 /// 是否应自动重试（保留你原来的语义，但复用决策）
 bool shouldAutoRetry(Failure f) => actionForFailure(f) == ErrorAction.retry;
 
-/*
-final overrides = ErrorActionOverrides(
-  codeOverrides: {
-    'PAY_3DS_REQUIRED': ErrorAction.showDialog, // AB：临时改成弹窗
-  },
-  categoryOverrides: {
-    BizCategory.validation: ErrorAction.showDialog, // 临时把表单错误收敛为弹窗
-  },
-);
-
-final r = await repo.login(...);
-r.fold(
-  (v) => ...,
-  (e) {
-    switch (actionForFailure(e, overrides: overrides)) {
-      case ErrorAction.reauth: _goLogin(); break;
-      case ErrorAction.retry:  _retry(); break;
-      case ErrorAction.showForm: _showFormErrors(); break;
-      case ErrorAction.require3DS: _start3DS(); break;
-      default: _toast(failureMessage(e));
-    }
-  },
-);
-*/

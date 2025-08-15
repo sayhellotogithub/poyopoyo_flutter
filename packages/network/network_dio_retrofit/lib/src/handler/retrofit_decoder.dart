@@ -6,7 +6,7 @@
 import 'package:data/common/envelope_classifier.dart';
 import 'package:domain/domain.dart';
 import 'package:retrofit/retrofit.dart';
-
+@deprecated
 AppResult<T> fromHttpResponse<T>(
   HttpResponse resp, {
   required T Function(dynamic json) mapData,
