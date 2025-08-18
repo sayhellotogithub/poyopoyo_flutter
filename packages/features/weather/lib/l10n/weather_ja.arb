@@ -1,0 +1,31 @@
+{
+  "@@locale": "ja",
+  "weather_appTitle": "ポヨポヨ 天気",
+  "weather_settings": "設定",
+  "weather_theme_setting": "🌗 テーマ設定",
+  "weather_language_setting": "🌐 言語設定",
+  "weather_light": "ライト",
+  "weather_dark": "ダーク",
+  "weather_japanese": "日本語",
+  "weather_english": "英語",
+  "weather_errorTimeout": "接続がタイムアウトしました",
+  "weather_errorServer": "サーバーエラーが発生しました",
+  "weather_errorUnknown": "不明なエラーが発生しました",
+  "weather_cityNotFound": "都市が見つかりませんでした",
+  "weather_searchHint": "都市を検索",
+  "weather_cancel": "キャンセル",
+  "weather_dataNotFound": "データが見つかりませんでした",
+  "weather_fiveDayForecast": "5日間予報",
+  "weather_tempHighLow": "最高 {max}° 最低 {min}°",
+  "@weather_tempHighLow": {
+    "description": "最高気温と最低気温の表示",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      },
+      "min": {
+        "type": "String"
+      }
+    }
+  }
+}

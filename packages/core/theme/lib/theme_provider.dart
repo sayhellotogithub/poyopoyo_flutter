@@ -5,12 +5,12 @@
 // -------------------------------------------------------------------
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:theme/repository/shared_preferences_repository.dart';
 import 'package:theme/theme_mapper.dart';
 
 import '../repository/shared_preferences_repository_impl.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final themeModeProvider = AsyncNotifierProvider<ThemeModeNotifier, ThemeMode>(
   ThemeModeNotifier.new,
@@ -37,5 +37,11 @@ class ThemeModeNotifier extends AsyncNotifier<ThemeMode> {
     state = AsyncValue.data(next);
     await _prefsRepo
         .saveAppThemeMode(AppThemeModeMapper.fromMaterialTheme(next));
+  }
+
+  Future<void> set(ThemeMode mode) async {
+    state = AsyncValue.data(mode);
+    await _prefsRepo
+        .saveAppThemeMode(AppThemeModeMapper.fromMaterialTheme(mode));
   }
 }

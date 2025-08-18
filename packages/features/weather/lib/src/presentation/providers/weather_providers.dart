@@ -1,0 +1,43 @@
+// -------------------------------------------------------------------
+// Author: WANG JUN
+// Date: 2025/07/18
+// Description:
+// -------------------------------------------------------------------
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:poyopoyo_weather/src/application/usecases/fetch_forecaset_by_location_usecase.dart';
+import 'package:poyopoyo_weather/src/application/usecases/fetch_forecast_usecase.dart';
+import 'package:poyopoyo_weather/src/presentation/providers/weather_api_providers.dart';
+
+import '../../application/usecases/fetch_current_weather_usecase.dart';
+import '../../application/usecases/fetch_weather_by_location_usecase.dart';
+import '../../data/network/weather_api.dart';
+import '../../data/repositories/weather_repository_impl.dart';
+import '../state/weather_state.dart';
+import '../viewmodels/weather_view_model.dart';
+
+final weatherRepositoryProvider = Provider((ref) {
+  final client = ref.read(weatherApiClientProvider);
+  final api = WeatherApi(client.dio, baseUrl: client.dio.options.baseUrl);
+  return WeatherRepositoryImpl(api: api, apiKey: client.apiKey);
+});
+
+final fetchCurrentWeatherUseCaseProvider = Provider((ref) {
+  final repo = ref.watch(weatherRepositoryProvider);
+  return FetchCurrentWeatherUseCase(repo);
+});
+final fetchCurrentWeatherByLocationUseCaseProvider = Provider((ref) {
+  final repo = ref.watch(weatherRepositoryProvider);
+  return FetchWeatherByLocationUseCase(repo);
+});
+final fetchForecastUseCaseProvider = Provider((ref) {
+  final repo = ref.watch(weatherRepositoryProvider);
+  return FetchForecastUseCase(repo);
+});
+
+final fetchForecastByLocationUseCaseProvider = Provider((ref) {
+  final repo = ref.watch(weatherRepositoryProvider);
+  return FetchForecastByLocationUseCase(repo);
+});
+
+final weatherViewModelProvider =
+    NotifierProvider<WeatherViewModel, WeatherState>(WeatherViewModel.new);

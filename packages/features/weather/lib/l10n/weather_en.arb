@@ -1,0 +1,31 @@
+{
+  "@@locale": "en",
+  "weather_appTitle": "PoyoPoyo Weather",
+  "weather_settings": "Settings",
+  "weather_theme_setting": "🌗 Theme Setting",
+  "weather_language_setting": "🌐 Language Setting",
+  "weather_light": "Light",
+  "weather_dark": "Dark",
+  "weather_japanese": "Japanese",
+  "weather_english": "English",
+  "weather_errorTimeout": "Connection timed out",
+  "weather_errorServer": "Server error occurred",
+  "weather_errorUnknown": "An unknown error occurred",
+  "weather_cityNotFound": "City not found",
+  "weather_searchHint": "Search city",
+  "weather_cancel": "Cancel",
+  "weather_dataNotFound": "No data found",
+  "weather_fiveDayForecast": "5-day forecast",
+  "weather_tempHighLow": "High {max}° Low {min}°",
+  "@weather_tempHighLow": {
+    "description": "Display high and low temperature",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      },
+      "min": {
+        "type": "String"
+      }
+    }
+  }
+}

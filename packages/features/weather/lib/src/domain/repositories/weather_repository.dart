@@ -1,0 +1,34 @@
+// -------------------------------------------------------------------
+// Author: WANG JUN
+// Date: 2025/07/18
+// Description:
+// -------------------------------------------------------------------
+
+import 'package:poyopoyo_weather/src/domain/entities/weather.dart';
+
+import '../../core/network/api_response.dart';
+import '../entities/forecast_weather.dart';
+
+abstract class WeatherRepository {
+  Future<ApiResponse<Weather>> fetchCurrentWeather({
+    required String cityName,
+    String lang = 'ja',
+  });
+
+  Future<ApiResponse<Weather>> fetchCurrentWeatherByLocation({
+    required double lat,
+    required double lon,
+    String lang = 'ja',
+  });
+
+  Future<ApiResponse<List<ForecastWeather>>> fetchForecast({
+    required String cityName,
+    String lang = 'ja',
+  });
+
+  Future<ApiResponse<List<ForecastWeather>>> fetchForecastByLocation({
+    required double lat,
+    required double lon,
+    String lang = 'ja',
+  });
+}

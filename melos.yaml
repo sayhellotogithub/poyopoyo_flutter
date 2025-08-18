@@ -31,10 +31,17 @@ scripts:
     run: melos exec --scope="api" -- "dart run build_runner build --delete-conflicting-outputs"
 
   gen:rest:
-    run: melos exec --scope="auth,network_dio_retrofit" -- "dart run build_runner build --delete-conflicting-outputs"
+    run: melos exec --scope="auth,network_dio_retrofit,poyopoyo_weather" -- "dart run build_runner build --delete-conflicting-outputs"
 
   gen:all:
     run: |
       melos run gen:dto
       melos run gen:api
       melos run gen:rest
+      
+
+  gen-l10n:
+    run: |
+      melos exec -- \
+        "flutter gen-l10n"
+    description: "Generate localizations in all Flutter packages"
