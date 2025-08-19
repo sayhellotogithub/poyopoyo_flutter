@@ -7,15 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:locale/locale.dart';
 
-import '../../domain/entities/forecast_weather.dart';
 import '../../../l10n/weather_localizations.dart';
+import '../../domain/entities/forecast_weather.dart';
 import '../../presentation/models/daily_forecast_group.dart';
 import '../../presentation/providers/weather_providers.dart';
-import '../models/daily_forecast_group.dart';
-import '../providers/weather_providers.dart';
-import '../utils/date_time_utils.dart';
 import '../../presentation/widgets/hourly_temp_chart.dart';
 import '../../presentation/widgets/weather_icon.dart';
+import '../utils/date_time_utils.dart';
 
 class CityWeatherDetailScreen extends ConsumerStatefulWidget {
   final String cityName;
@@ -46,6 +44,7 @@ class _CityWeatherDetailScreenState
     final forecastList = viewModel.forecast;
     final locale = ref.watch(localeProvider);
     final loc = WeatherLocalizations.of(context)!;
+
 
     if (viewModel.isLoading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));

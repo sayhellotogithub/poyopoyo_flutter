@@ -41,7 +41,7 @@ class PoyopoyoApp extends ConsumerWidget {
               darkTheme: AppTheme.dark,
               routerConfig: router,
               locale: locale,
-              showPerformanceOverlay: true,
+              showPerformanceOverlay: false,
               supportedLocales: WeatherLocalizations.supportedLocales,
               localizationsDelegates: const [
                 ...WeatherLocalizations.localizationsDelegates,
