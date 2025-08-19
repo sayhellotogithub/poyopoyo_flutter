@@ -11,6 +11,7 @@ import '../../core/network/weather_api_client.dart';
 
 final weatherApiClientProvider = Provider<WeatherApiClient>((ref) {
   final apiKey = dotenv.env['OPENWEATHER_API_KEY'] ?? '';
-  final dio = DioClient(baseUrl: 'https://api.openweathermap.org/').dio;
+  final baseUrl = dotenv.env['OPENWEATHER_SITE'] ?? '';
+  final dio = DioClient(baseUrl: baseUrl).dio;
   return WeatherApiClient(dio: dio, apiKey: apiKey);
 });
