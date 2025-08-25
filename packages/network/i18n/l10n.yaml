@@ -1,0 +1,9 @@
+arb_dir: lib/l10n
+synthetic-package: false
+output-localization-file: weather_localizations.dart
+output-class: WeatherLocalizations
+template-arb-file: weather_en.arb
+use-deferred-loading: false
+preferred-supported-locales: [ja, en]
+
+
