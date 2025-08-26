@@ -1,0 +1,9 @@
+arb_dir: lib/l10n
+synthetic-package: false
+output-localization-file: network_failure_localizations.dart
+output-class: NetworkFailureLocalizations
+template-arb-file: network_failure_en.arb
+use-deferred-loading: false
+preferred-supported-locales: [ja, en]
+
+
