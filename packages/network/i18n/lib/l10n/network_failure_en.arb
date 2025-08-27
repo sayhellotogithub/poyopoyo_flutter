@@ -1,8 +1,0 @@
-{
-  "@@locale": "en",
-  "network_errorTimeout": "Connection timed out",
-  "network_errorServer": "Server error occurred",
-  "network_errorUnknown": "An unknown error occurred",
-  "network_errorNoConnection": "No internet connection",
-  "network_errorBadResponse": "Bad server response"
-}

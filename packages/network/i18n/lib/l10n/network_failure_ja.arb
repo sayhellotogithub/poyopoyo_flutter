@@ -1,8 +1,0 @@
-{
-  "@@locale": "ja",
-  "network_errorTimeout": "接続がタイムアウトしました",
-  "network_errorServer": "サーバーエラーが発生しました",
-  "network_errorUnknown": "不明なエラーが発生しました",
-  "network_errorNoConnection": "インターネットに接続されていません",
-  "network_errorBadResponse": "サーバーの応答が不正です"
-}

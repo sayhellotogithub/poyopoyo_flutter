@@ -1,0 +1,24 @@
+{
+  "@@locale": "ja",
+
+  "net_timeout": "タイムアウトしました。",
+  "net_offline": "インターネットに接続されていません。",
+  "net_cancelled": "リクエストはキャンセルされました。",
+  "net_tls": "セキュア接続に失敗しました。",
+  "net_dns": "DNS の解決に失敗しました。",
+  "net_bad_response": "サーバーから不正な応答が返されました。",
+  "net_unknown": "不明なネットワークエラーが発生しました。",
+
+  "http_401": "未認証です。もう一度サインインしてください。",
+  "http_403": "アクセスが拒否されました。権限がありません。",
+  "http_404": "リソースが見つかりません。",
+  "http_429": "リクエストが多すぎます。しばらくしてからお試しください。",
+  "http_retryable": "一時的な問題が発生しました（HTTP {code}）。再試行してください。",
+  "@http_retryable": {
+    "placeholders": { "code": { "type": "int" } }
+  },
+  "http_other": "リクエストに失敗しました（HTTP {code}）。",
+  "@http_other": {
+    "placeholders": { "code": { "type": "int" } }
+  }
+}

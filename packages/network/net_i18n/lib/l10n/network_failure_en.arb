@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "net_timeout": "Connection timed out.",
+  "net_offline": "No internet connection.",
+  "net_cancelled": "Request was cancelled.",
+  "net_tls": "Secure connection failed.",
+  "net_dns": "DNS lookup failed.",
+  "net_bad_response": "Bad server response.",
+  "net_unknown": "An unknown network error occurred.",
+
+  "http_401": "Unauthorized. Please sign in again.",
+  "http_403": "Forbidden. You don't have permission to access this resource.",
+  "http_404": "Resource not found.",
+  "http_429": "Too many requests. Please try again later.",
+  "http_retryable": "Temporary issue (HTTP {code}). Please retry.",
+  "@http_retryable": {
+    "placeholders": { "code": { "type": "int" } }
+  },
+  "http_other": "Request failed (HTTP {code}).",
+  "@http_other": {
+    "placeholders": { "code": { "type": "int" } }
+  }
+}
