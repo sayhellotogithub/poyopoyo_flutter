@@ -12,6 +12,7 @@
   "weather_errorServer": "Server error occurred",
   "weather_errorUnknown": "An unknown error occurred",
   "weather_cityNotFound": "City not found",
+  "weather_showErrorTest": "Weather Error Test",
   "weather_searchHint": "Search city",
   "weather_cancel": "Cancel",
   "weather_dataNotFound": "No data found",

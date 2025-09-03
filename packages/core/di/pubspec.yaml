@@ -16,6 +16,8 @@ dependencies:
     path: ../plugin
   network_core:
     path: ../../network/core
+  action_policy:
+    path: ../../core/action_policy
   network_dio:
     path: ../../network/network_dio
   network_dio_retrofit:

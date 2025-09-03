@@ -1,0 +1,8 @@
+{
+  "@@locale": "en",
+  "auth_token_expired": "Your session has expired. Please sign in again.",
+  "auth_kyc_required": "Please complete identity verification (KYC).",
+  "auth_user_blocked": "Your account is suspended for {days} day(s).",
+  "@auth_user_blocked": { "placeholders": { "days": { "type": "int" } } }
+
+}

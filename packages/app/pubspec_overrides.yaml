@@ -1,9 +1,13 @@
-# melos_managed_dependency_overrides: api,auth,contracts,di,dto,plugin,settings,theme,widgets,data,domain,network_core,network_dio,network_dio_retrofit
+# melos_managed_dependency_overrides: action_policy,api,auth,business_failure_i18n,contracts,data,di,domain,dto,error_lab,locale,localization,network_core,network_dio,network_dio_retrofit,network_failure_i18n,plugin,poyopoyo_weather,settings,theme,ui,widgets
 dependency_overrides:
+  action_policy:
+    path: ../core/action_policy
   api:
     path: ../shared/api
   auth:
     path: ../features/auth
+  business_failure_i18n:
+    path: ../shared/business_failure_i18n
   contracts:
     path: ../core/contracts
   data:
@@ -14,17 +18,29 @@ dependency_overrides:
     path: ../shared/domain
   dto:
     path: ../shared/dto
+  error_lab:
+    path: ../features/error_lab
+  locale:
+    path: ../core/locale
+  localization:
+    path: ../shared/localization
   network_core:
     path: ../network/core
   network_dio:
     path: ../network/network_dio
   network_dio_retrofit:
     path: ../network/network_dio_retrofit
+  network_failure_i18n:
+    path: ../network/net_i18n
   plugin:
     path: ../core/plugin
+  poyopoyo_weather:
+    path: ../features/weather
   settings:
     path: ../features/settings
   theme:
     path: ../core/theme
+  ui:
+    path: ../shared/ui
   widgets:
     path: ../shared/widgets

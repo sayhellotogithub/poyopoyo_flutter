@@ -4,11 +4,12 @@
 // Description:
 // -------------------------------------------------------------------
 
+import 'package:domain/domain.dart';
+import 'package:network_dio_retrofit/network_dio_retrofit.dart';
 
-import '../../core/network/api_response.dart';
-import '../../core/network/dio_helper.dart';
 import '../../domain/entities/city.dart';
 import '../../domain/repositories/city_repository.dart';
+import '../models/city_dto.dart';
 import '../network/city_api.dart';
 
 class CityRepositoryImpl implements CityRepository {
@@ -18,10 +19,15 @@ class CityRepositoryImpl implements CityRepository {
   CityRepositoryImpl({required this.api, required this.apiKey});
 
   @override
-  Future<ApiResponse<List<City>>> searchCities(String keyword) {
-    return safeRequest(() async {
-      final dtos = await api.searchCities(keyword, 5, apiKey);
-      return dtos.map((dto) => dto.toEntity()).toList();
-    });
+  Future<AppResult<List<City>>> searchCities(String keyword) {
+    return safeRequestRetrofit(
+      () => api.searchCities(keyword, 5, apiKey),
+      mapData: (json) {
+        return (json as List)
+            .map((e) =>
+                e is CityDto ? e.toEntity() : CityDto.fromJson(e).toEntity())
+            .toList(growable: false);
+      },
+    );
   }
 }

@@ -8,7 +8,6 @@ import 'package:logger/logger.dart';
 import 'package:poyopoyo_weather/src/application/usecases/fetch_forecast_usecase.dart';
 
 import '../../application/usecases/fetch_current_weather_usecase.dart';
-import '../../core/network/api_response.dart';
 import '../../domain/entities/forecast_weather.dart';
 import '../models/daily_forecast_group.dart';
 import '../providers/weather_providers.dart';
@@ -32,31 +31,15 @@ class WeatherViewModel extends Notifier<WeatherState> {
     final currentRes = await _fetchCurrentWeather.execute(cityName, lang: lang);
     final forecastRes = await _fetchForecast.execute(cityName);
 
-    if (currentRes is ApiFailure && forecastRes is ApiFailure) {
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage:
-            '${(currentRes as ApiFailure).messageKey}\n${(forecastRes as ApiFailure).messageKey}',
-      );
-    } else if (currentRes is ApiFailure) {
-      state = state.copyWith(
-        isLoading: false,
-        forecast: (forecastRes as ApiSuccess).data,
-        errorMessage: (currentRes as ApiFailure).messageKey,
-      );
-    } else if (forecastRes is ApiFailure) {
-      state = state.copyWith(
-        isLoading: false,
-        current: (currentRes as ApiSuccess).data,
-        errorMessage: (forecastRes as ApiFailure).messageKey,
-      );
-    } else {
-      state = state.copyWith(
-        current: (currentRes as ApiSuccess).data,
-        forecast: (forecastRes as ApiSuccess).data,
-        isLoading: false,
-      );
-    }
+    state = currentRes.fold(
+      (data) => state.copyWith(current: data, isLoading: false),
+      (failure) => state.copyWith(isLoading: false, errorMessage: failure),
+    );
+
+    state = forecastRes.fold(
+      (data) => state.copyWith(forecast: data, isLoading: false),
+      (failure) => state.copyWith(isLoading: false, errorMessage: failure),
+    );
   }
 
   List<DailyForecastGroup> get groupedForecastByDay {

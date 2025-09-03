@@ -1,0 +1,32 @@
+# melos_managed_dependency_overrides: action_policy,api,business_failure_i18n,contracts,data,di,domain,dto,localization,network_core,network_dio,network_dio_retrofit,network_failure_i18n,plugin,ui
+dependency_overrides:
+  action_policy:
+    path: ../../core/action_policy
+  api:
+    path: ../../shared/api
+  business_failure_i18n:
+    path: ../../shared/business_failure_i18n
+  contracts:
+    path: ../../core/contracts
+  data:
+    path: ../../shared/data
+  di:
+    path: ../../core/di
+  domain:
+    path: ../../shared/domain
+  dto:
+    path: ../../shared/dto
+  localization:
+    path: ../../shared/localization
+  network_core:
+    path: ../../network/core
+  network_dio:
+    path: ../../network/network_dio
+  network_dio_retrofit:
+    path: ../../network/network_dio_retrofit
+  network_failure_i18n:
+    path: ../../network/net_i18n
+  plugin:
+    path: ../../core/plugin
+  ui:
+    path: ../../shared/ui

@@ -4,37 +4,23 @@
 // Description:
 // -------------------------------------------------------------------
 
-import 'package:domain/src/codes/payment_codes.dart';
+import 'package:action_policy/action_policy.dart';
 
-import 'auth_codes.dart';
-import 'biz_codes.dart';
-import 'error_action_types.dart';
+import 'common_codes.dart';
 
 const Set<int> kDefaultRetryableHttpStatuses = {429, 502, 503, 504};
 
 const Map<String, ErrorAction> kDirectCodeActions = {
-  // Auth
-  AuthCodes.invalidCredentials: ErrorAction.showForm,
-  AuthCodes.tokenExpired: ErrorAction.reauth,
-  AuthCodes.tokenRevoked: ErrorAction.reauth,
-  AuthCodes.unauthorized: ErrorAction.reauth,
+  // AuthCodes.invalidCredentials: ErrorAction.showForm,
+  // AuthCodes.tokenExpired: ErrorAction.reauth,
+  // AuthCodes.tokenRevoked: ErrorAction.reauth,
+  // AuthCodes.unauthorized: ErrorAction.reauth,
 
-  // Payment
-  PaymentCodes.threeDSRequired: ErrorAction.require3DS,
-  PaymentCodes.providerDown: ErrorAction.retry,
-  PaymentCodes.gatewayTimeout: ErrorAction.retry,
-  PaymentCodes.cardDeclined: ErrorAction.showForm,
-  PaymentCodes.insufficientFunds: ErrorAction.showForm,
-  PaymentCodes.currencyUnsupported: ErrorAction.showForm,
-  PaymentCodes.limitExceeded: ErrorAction.showForm,
-
-  // General（示例）
-  BizCodes.serverBusy: ErrorAction.retry,
-  BizCodes.rateLimited: ErrorAction.retry,
+  CommonCodes.serverBusy: ErrorAction.retry,
+  CommonCodes.rateLimited: ErrorAction.retry,
 };
 const Map<BizCategory, ErrorAction> kCategoryDefaults = {
   BizCategory.auth: ErrorAction.reauth,
-  BizCategory.payment: ErrorAction.showDialog,
   BizCategory.general: ErrorAction.showDialog,
 };
 

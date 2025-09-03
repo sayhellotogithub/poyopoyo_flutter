@@ -3,6 +3,7 @@
 // Date: 2025/08/15
 // Description:
 // -------------------------------------------------------------------
+import 'package:action_policy/action_policy.dart';
 import 'package:dio/dio.dart';
 import 'package:domain/domain.dart';
 import 'package:network_core/core.dart';
@@ -19,7 +20,7 @@ Future<AppResult<ApiEnvelope<T>>> safeRequestEnvelope<T>(
       return Ok<ApiEnvelope<T>, Failure>(result);
     } else {
       return Err<ApiEnvelope<T>, Failure>(BizFailure(
-        code: result.code ?? BizCodes.businessError,
+        code: result.code ?? CommonCodes.businessError,
         message: result.message ?? '',
         httpStatus: 0,
         extra: {'raw': result},

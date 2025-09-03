@@ -12,6 +12,9 @@ dependencies:
   flutter_riverpod: ^2.6.1
   go_router: ^16.1.0
   flutter_dotenv: ^5.2.1
+#  intl: ^0.20.2
+#  flutter_localizations:
+#    sdk: flutter
 
   theme:
     path: ../core/theme
@@ -21,8 +24,13 @@ dependencies:
     path: ../core/contracts
   di:
     path: ../core/di
+  action_policy:
+    path: ../core/action_policy
+
   widgets:
     path: ../shared/widgets
+  ui:
+    path: ../shared/ui
 
   settings:
     path: ../features/settings
@@ -32,6 +40,14 @@ dependencies:
     path: ../features/weather
   locale:
     path: ../core/locale
+  error_lab:
+    path: ../features/error_lab
+
+  network_failure_i18n:
+    path: ../network/net_i18n
+  business_failure_i18n:
+    path: ../shared/business_failure_i18n
+
 
 flutter:
 

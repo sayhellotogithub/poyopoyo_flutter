@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.8.1
+  sdk: ">=3.2.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,6 +39,26 @@ dependencies:
     path: ../../core/plugin
   theme:
     path: ../../core/theme
+  network_core:
+    path: ../../network/core
+  network_dio_retrofit:
+    path: ../../network/network_dio_retrofit
+  domain:
+    path: ../../shared/domain
+  data:
+    path: ../../shared/data
+  di:
+    path: ../../core/di
+  action_policy:
+    path: ../../core/action_policy
+  contracts:
+    path: ../../core/contracts
+  business_failure_i18n:
+    path: ../../shared/business_failure_i18n
+  ui:
+    path: ../../shared/ui
+  localization:
+    path: ../../shared/localization
 
   intl: ^0.20.2
 
@@ -58,6 +78,7 @@ dependencies:
   cached_network_image: ^3.4.1
   fl_chart: ^1.0.0
   retrofit: ^4.6.0
+  vector_math: ^2.2.0
 
 dev_dependencies:
   flutter_test:

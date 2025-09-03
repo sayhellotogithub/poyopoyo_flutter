@@ -1,0 +1,8 @@
+arb_dir: lib/l10n
+output-localization-file: auth_localizations.dart
+output-class: AuthLocalizations
+template-arb-file: auth_en.arb
+use-deferred-loading: false
+preferred-supported-locales: [ja, en]
+
+

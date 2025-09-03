@@ -17,7 +17,7 @@ import '../viewmodels/weather_view_model.dart';
 
 final weatherRepositoryProvider = Provider((ref) {
   final client = ref.read(weatherApiClientProvider);
-  final api = WeatherApi(client.dio, baseUrl: client.dio.options.baseUrl);
+  final api = WeatherApi(client.dio, baseUrl: client.baseUrl);
   return WeatherRepositoryImpl(api: api, apiKey: client.apiKey);
 });
 

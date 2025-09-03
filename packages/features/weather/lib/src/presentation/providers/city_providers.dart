@@ -14,7 +14,7 @@ import '../../domain/repositories/city_repository.dart';
 
 final cityRepositoryProvider = Provider<CityRepository>((ref) {
   final client = ref.watch(weatherApiClientProvider);
-  final cityApi = CityApi(client.dio, baseUrl: client.dio.options.baseUrl);
+  final cityApi = CityApi(client.dio, baseUrl: client.baseUrl);
   return CityRepositoryImpl(api: cityApi, apiKey: client.apiKey);
 });
 final searchCityUseCaseProvider = Provider<SearchCityUseCase>((ref) {

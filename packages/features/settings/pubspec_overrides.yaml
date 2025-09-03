@@ -1,5 +1,7 @@
-# melos_managed_dependency_overrides: contracts,di,plugin,theme,widgets,data,domain,network_core,network_dio,network_dio_retrofit
+# melos_managed_dependency_overrides: action_policy,contracts,data,di,domain,network_core,network_dio,network_dio_retrofit,plugin,theme,widgets
 dependency_overrides:
+  action_policy:
+    path: ../../core/action_policy
   contracts:
     path: ../../core/contracts
   data:

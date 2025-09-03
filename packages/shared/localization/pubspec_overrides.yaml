@@ -1,0 +1,12 @@
+# melos_managed_dependency_overrides: action_policy,business_failure_i18n,domain,network_core,network_failure_i18n
+dependency_overrides:
+  action_policy:
+    path: ../../core/action_policy
+  business_failure_i18n:
+    path: ../business_failure_i18n
+  domain:
+    path: ../domain
+  network_core:
+    path: ../../network/core
+  network_failure_i18n:
+    path: ../../network/net_i18n

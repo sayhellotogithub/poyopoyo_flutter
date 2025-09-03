@@ -4,29 +4,29 @@
 // Description:
 // -------------------------------------------------------------------
 
+import 'package:domain/domain.dart';
 import 'package:poyopoyo_weather/src/domain/entities/weather.dart';
 
-import '../../core/network/api_response.dart';
 import '../entities/forecast_weather.dart';
 
 abstract class WeatherRepository {
-  Future<ApiResponse<Weather>> fetchCurrentWeather({
+  Future<AppResult<Weather>> fetchCurrentWeather({
     required String cityName,
     String lang = 'ja',
   });
 
-  Future<ApiResponse<Weather>> fetchCurrentWeatherByLocation({
+  Future<AppResult<Weather>> fetchCurrentWeatherByLocation({
     required double lat,
     required double lon,
     String lang = 'ja',
   });
 
-  Future<ApiResponse<List<ForecastWeather>>> fetchForecast({
+  Future<AppResult<List<ForecastWeather>>> fetchForecast({
     required String cityName,
     String lang = 'ja',
   });
 
-  Future<ApiResponse<List<ForecastWeather>>> fetchForecastByLocation({
+  Future<AppResult<List<ForecastWeather>>> fetchForecastByLocation({
     required double lat,
     required double lon,
     String lang = 'ja',

@@ -1,0 +1,7 @@
+{
+  "@@locale": "ja",
+
+  "token_expired": "Token expired.",
+  "kyc_required": "Kyc required.",
+  "user_blocked": "User blocked."
+}

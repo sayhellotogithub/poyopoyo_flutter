@@ -5,7 +5,9 @@
 // -------------------------------------------------------------------
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+
 import '../models/forecast_response_dto.dart';
+import '../models/forecast_weather_dto.dart';
 import '../models/weather_dto.dart';
 
 part 'weather_api.g.dart';
@@ -15,7 +17,7 @@ abstract class WeatherApi {
   factory WeatherApi(Dio dio, {String baseUrl}) = _WeatherApi;
 
   @GET('data/2.5/weather')
-  Future<WeatherDto> fetchCurrentByCity(
+  Future<HttpResponse<WeatherDto>> fetchCurrentByCity(
     @Query('q') String cityName,
     @Query('appid') String apiKey,
     @Query('lang') String lang,
@@ -23,7 +25,7 @@ abstract class WeatherApi {
   );
 
   @GET('data/2.5/weather')
-  Future<WeatherDto> fetchCurrentByLocation(
+  Future<HttpResponse<WeatherDto>> fetchCurrentByLocation(
     @Query('lat') double lat,
     @Query('lon') double lon,
     @Query('appid') String apiKey,
@@ -32,7 +34,7 @@ abstract class WeatherApi {
   );
 
   @GET('data/2.5/forecast')
-  Future<ForecastResponseDto> fetchForecast(
+  Future<HttpResponse<ForecastResponseDto>> fetchForecast(
     @Query('q') String cityName,
     @Query('appid') String apiKey,
     @Query('lang') String lang,
@@ -40,7 +42,7 @@ abstract class WeatherApi {
   );
 
   @GET('data/2.5/forecast')
-  Future<ForecastResponseDto> fetchForecastByLocation(
+  Future<HttpResponse<ForecastResponseDto>> fetchForecastByLocation(
     @Query('lat') double lat,
     @Query('lon') double lon,
     @Query('appid') String apiKey,

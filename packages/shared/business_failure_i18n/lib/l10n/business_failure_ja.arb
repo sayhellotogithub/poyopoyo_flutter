@@ -1,0 +1,14 @@
+{
+  "@@locale": "ja",
+  "biz_unknown": "エラーが発生しました。しばらくしてからお試しください。（コード: {code}）",
+  "@biz_unknown": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "biz_rate_limited": "リクエストが多すぎます。しばらくしてからもう一度お試しください。.",
+  "biz_maintenance": "サービスはメンテナンス中です。しばらくしてからもう一度お試しください。",
+  "biz_service_busy": "サービスはビジー状態です。しばらくしてからもう一度お試しください。"
+}

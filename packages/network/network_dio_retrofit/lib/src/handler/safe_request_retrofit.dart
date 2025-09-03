@@ -3,6 +3,7 @@
 // Date: 2025/08/15
 // Description:
 // -------------------------------------------------------------------
+import 'package:action_policy/action_policy.dart';
 import 'package:data/common/envelope_classifier.dart';
 import 'package:dio/dio.dart';
 import 'package:domain/domain.dart';
@@ -17,8 +18,8 @@ Future<AppResult<T>> safeRequestRetrofit<T>(
   try {
     final resp = await call();
     final status = resp.response.statusCode ?? -1;
-    final body = resp.data; // retrofit 已将 data 取出
-    return classifyEnvelope<T>(status, body, mapData: mapData);
+    final body = resp.data;
+    return classifyEnvelopeSmart<T>(status, body, mapData: mapData);
   } on DioException catch (e) {
     return Err<T, Failure>(NetworkFailure(DioUtil.mapDioError(e)));
   } catch (e) {

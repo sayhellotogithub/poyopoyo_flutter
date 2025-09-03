@@ -3,19 +3,18 @@
 // Date: 2025/07/20
 // Description:
 // -------------------------------------------------------------------
+import 'package:action_policy/action_policy.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application/usecases/fetch_current_weather_usecase.dart';
 import '../../application/usecases/fetch_weather_by_location_usecase.dart';
-import '../../core/base/state_with_error_key.dart';
-import '../../core/network/api_response.dart';
 import '../../domain/entities/weather.dart';
 import '../providers/weather_providers.dart';
 
-class WeatherListState implements StateWithErrorKey {
+class WeatherListState {
   final List<Weather> weatherList;
   final bool isLoading;
-  final String? error;
+  final Failure? error;
 
   WeatherListState({
     this.weatherList = const [],
@@ -26,7 +25,7 @@ class WeatherListState implements StateWithErrorKey {
   WeatherListState copyWith({
     List<Weather>? weatherList,
     bool? isLoading,
-    String? error,
+    Failure? error,
   }) {
     return WeatherListState(
       weatherList: weatherList ?? this.weatherList,
@@ -34,9 +33,6 @@ class WeatherListState implements StateWithErrorKey {
       error: error,
     );
   }
-
-  @override
-  String? get errorKey => error;
 }
 
 class WeatherListViewModel extends Notifier<WeatherListState> {
@@ -61,20 +57,17 @@ class WeatherListViewModel extends Notifier<WeatherListState> {
       lang: lang,
     );
 
-    if (currentRes is ApiFailure) {
-      state = state.copyWith(
+    state = currentRes.fold(
+      (data) => state.copyWith(
+        weatherList: [...state.weatherList, data],
         isLoading: false,
-        error: (currentRes as ApiFailure).messageKey,
-      );
-      return;
-    }
-    if (currentRes is ApiSuccess) {
-      final updatedList = <Weather>[
-        ...state.weatherList,
-        (currentRes as ApiSuccess).data,
-      ];
-      state = state.copyWith(weatherList: updatedList, isLoading: false);
-    }
+        error: null,
+      ),
+      (failure) => state.copyWith(
+        isLoading: false,
+        error: failure, // 保存 messageKey，UI 再渲染
+      ),
+    );
   }
 
   Future<void> addWeatherByCity(String cityName, String lang) async {
@@ -84,19 +77,13 @@ class WeatherListViewModel extends Notifier<WeatherListState> {
       lang: lang,
     );
 
-    if (currentRes is ApiFailure) {
-      state = state.copyWith(
+    state = currentRes.fold(
+      (data) => state.copyWith(
+        weatherList: [...state.weatherList, data],
         isLoading: false,
-        error: (currentRes as ApiFailure).messageKey,
-      );
-      return;
-    }
-    if (currentRes is ApiSuccess) {
-      final updatedList = <Weather>[
-        ...state.weatherList,
-        (currentRes as ApiSuccess).data,
-      ];
-      state = state.copyWith(weatherList: updatedList, isLoading: false);
-    }
+        error: null,
+      ),
+      (failure) => state.copyWith(isLoading: false, error: failure),
+    );
   }
 }

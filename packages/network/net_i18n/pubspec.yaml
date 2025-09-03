@@ -15,6 +15,8 @@ dependencies:
   flutter_riverpod: ^2.6.1
   domain:
     path: ../../shared/domain
+  action_policy:
+    path: ../../core/action_policy
 
 flutter:
   generate: true

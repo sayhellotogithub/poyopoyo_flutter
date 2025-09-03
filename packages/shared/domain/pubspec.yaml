@@ -9,6 +9,8 @@ environment:
 dependencies:
   network_core:
     path: ../../network/core
+  action_policy:
+    path: ../../core/action_policy
 
 dev_dependencies:
   test: any

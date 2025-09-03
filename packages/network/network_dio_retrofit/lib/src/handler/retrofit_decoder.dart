@@ -13,5 +13,5 @@ AppResult<T> fromHttpResponse<T>(
 }) {
   final status = resp.response.statusCode ?? 0;
   final body = resp.data; // 已经是反序列化后的 Map 或其他结构
-  return classifyEnvelope<T>(status, body, mapData: mapData);
+  return classifyEnvelopeSmart<T>(status, body, mapData: mapData);
 }

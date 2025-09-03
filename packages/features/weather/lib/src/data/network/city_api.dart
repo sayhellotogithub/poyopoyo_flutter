@@ -1,11 +1,11 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
 // Date: 2025/07/22
-// Description: 
+// Description:
 // -------------------------------------------------------------------
 // city_api.dart
-import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../models/city_dto.dart';
 
@@ -16,9 +16,9 @@ abstract class CityApi {
   factory CityApi(Dio dio, {String baseUrl}) = _CityApi;
 
   @GET('geo/1.0/direct')
-  Future<List<CityDto>> searchCities(
-      @Query('q') String keyword,
-      @Query('limit') int limit,
-      @Query('appid') String apiKey,
-      );
+  Future<HttpResponse<List<CityDto>>> searchCities(
+    @Query('q') String keyword,
+    @Query('limit') int limit,
+    @Query('appid') String apiKey,
+  );
 }

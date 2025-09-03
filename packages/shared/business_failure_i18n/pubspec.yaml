@@ -1,5 +1,5 @@
-name: network_failure_i18n
-description: network_failure_i18n module
+name: business_failure_i18n
+description: business_failure_i18n module
 version: 0.0.1
 publish_to: "none"
 
@@ -12,6 +12,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_riverpod: ^2.6.1
+  domain:
+    path: ../../shared/domain
+  action_policy:
+    path: ../../core/action_policy
 
 flutter:
   generate: true

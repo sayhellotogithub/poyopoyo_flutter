@@ -6,6 +6,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:locale/locale.dart';
+import 'package:localization/localiztion.dart';
+import 'package:ui/ui.dart';
 
 import '../../../l10n/weather_localizations.dart';
 import '../../domain/entities/forecast_weather.dart';
@@ -45,13 +47,21 @@ class _CityWeatherDetailScreenState
     final locale = ref.watch(localeProvider);
     final loc = WeatherLocalizations.of(context)!;
 
-
     if (viewModel.isLoading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (viewModel.errorMessage != null) {
-      return Scaffold(body: Center(child: Text(viewModel.errorMessage!)));
+      UnifiedErrorPresenterX.of(ref).handle(context, viewModel.errorMessage!);
+      return Scaffold(
+        body: Center(
+          child: Text(
+            FailureLocalizerX.of(
+              ref,
+            ).localize(context, viewModel.errorMessage!),
+          ),
+        ),
+      );
     }
 
     if (weather == null || forecastList == null || forecastList.isEmpty) {

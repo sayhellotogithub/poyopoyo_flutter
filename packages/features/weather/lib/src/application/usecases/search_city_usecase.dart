@@ -4,6 +4,8 @@
 // Description: 
 // -------------------------------------------------------------------
 
+import 'package:domain/domain.dart';
+
 import '../../core/network/api_response.dart';
 import '../../domain/entities/city.dart';
 import '../../domain/repositories/city_repository.dart';
@@ -13,7 +15,7 @@ class SearchCityUseCase {
 
   SearchCityUseCase(this.repository);
 
-  Future<ApiResponse<List<City>>> execute(String keyword) {
+  Future<AppResult<List<City>>> execute(String keyword) {
     return repository.searchCities(keyword);
   }
 }

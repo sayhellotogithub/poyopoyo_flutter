@@ -2,6 +2,8 @@
 
 part of 'auth_api_v2.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -75,3 +77,5 @@ class _AuthApiV2 implements AuthApiV2 {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

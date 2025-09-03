@@ -12,6 +12,7 @@
   "weather_errorServer": "サーバーエラーが発生しました",
   "weather_errorUnknown": "不明なエラーが発生しました",
   "weather_cityNotFound": "都市が見つかりませんでした",
+  "weather_showErrorTest": "気象誤差テスト",
   "weather_searchHint": "都市を検索",
   "weather_cancel": "キャンセル",
   "weather_dataNotFound": "データが見つかりませんでした",

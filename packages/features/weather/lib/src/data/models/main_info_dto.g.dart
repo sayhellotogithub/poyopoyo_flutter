@@ -7,10 +7,10 @@ part of 'main_info_dto.dart';
 // **************************************************************************
 
 MainInfoDto _$MainInfoDtoFromJson(Map<String, dynamic> json) => MainInfoDto(
-  temp: (json['temp'] as num).toDouble(),
-  tempMax: (json['temp_max'] as num).toDouble(),
-  tempMin: (json['temp_min'] as num).toDouble(),
-);
+      temp: (json['temp'] as num).toDouble(),
+      tempMax: (json['temp_max'] as num).toDouble(),
+      tempMin: (json['temp_min'] as num).toDouble(),
+    );
 
 Map<String, dynamic> _$MainInfoDtoToJson(MainInfoDto instance) =>
     <String, dynamic>{

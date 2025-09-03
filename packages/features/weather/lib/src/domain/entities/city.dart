@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------
 // Author: WANG JUN
 // Date: 2025/07/19
-// Description: 
+// Description:
 // -------------------------------------------------------------------
 class City {
   final String name;
@@ -19,4 +19,9 @@ class City {
     this.state,
     this.localNames,
   });
+
+  @override
+  String toString() {
+    return 'City{name: $name, country: $country, lat: $lat, lon: $lon, state: $state, localNames: $localNames}';
+  }
 }

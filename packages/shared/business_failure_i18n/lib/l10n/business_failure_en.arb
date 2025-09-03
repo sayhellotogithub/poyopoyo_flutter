@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "biz_unknown": "Something went wrong. Please try again later. (Code: {code})",
+  "@biz_unknown": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "biz_rate_limited": "Too many requests. Please try again later.",
+  "biz_maintenance": "The service is under maintenance. Please try again later.",
+  "biz_service_busy": "The service is busy. Please retry in a moment."
+}

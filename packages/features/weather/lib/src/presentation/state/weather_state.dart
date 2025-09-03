@@ -3,6 +3,7 @@
 // Date: 2025/07/19
 // Description: 
 // -------------------------------------------------------------------
+import 'package:action_policy/action_policy.dart';
 import 'package:poyopoyo_weather/src/domain/entities/weather.dart';
 
 import '../../domain/entities/forecast_weather.dart';
@@ -11,7 +12,7 @@ class WeatherState {
   final Weather? current;
   final List<ForecastWeather>? forecast;
   final bool isLoading;
-  final String? errorMessage;
+  final Failure? errorMessage;
 
   WeatherState({
     this.current,
@@ -24,7 +25,7 @@ class WeatherState {
     Weather? current,
     List<ForecastWeather>? forecast,
     bool? isLoading,
-    String? errorMessage,
+    Failure? errorMessage,
   }) {
     return WeatherState(
       current: current ?? this.current,

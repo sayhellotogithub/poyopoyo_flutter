@@ -13,3 +13,5 @@ dependencies:
   flutter_riverpod: ^2.6.1
   shared_preferences: ^2.5.3
   go_router: ^16.1.0
+  action_policy:
+    path: ../../core/action_policy

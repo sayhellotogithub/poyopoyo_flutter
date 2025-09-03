@@ -1,4 +1,6 @@
-# melos_managed_dependency_overrides: network_core
+# melos_managed_dependency_overrides: action_policy,network_core
 dependency_overrides:
+  action_policy:
+    path: ../../core/action_policy
   network_core:
     path: ../../network/core

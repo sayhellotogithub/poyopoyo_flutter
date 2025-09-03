@@ -3,6 +3,7 @@
 // Date: 2025/08/26
 // Description:
 // -------------------------------------------------------------------
+import 'package:action_policy/action_policy.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/widgets.dart';
 
@@ -28,16 +29,16 @@ class NetworkFailureLocalizer {
     final locale = NetworkFailureLocalizations.of(context)!;
     final info = f.info;
 
-    // 1) 特定HTTP状态覆写
+    // 1) Specific HTTP status overrides
     if (info.httpStatus != null) {
       final ov = config.httpStatusOverrides[info.httpStatus!];
       if (ov != null) return ov(locale);
     }
-    // 2) 码级覆写
+    // 2) Code-level overwrite
     final ov2 = config.codeOverrides[info.code];
     if (ov2 != null) return ov2(locale, info.httpStatus);
 
-    // 3) 默认映射
+    // 3) Default Mapping
     switch (info.code) {
       case NetErrCode.offline:
         return locale.net_offline;

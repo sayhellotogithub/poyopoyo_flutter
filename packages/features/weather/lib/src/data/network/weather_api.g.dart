@@ -2,6 +2,8 @@
 
 part of 'weather_api.dart';
 
+// dart format off
+
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
@@ -18,7 +20,7 @@ class _WeatherApi implements WeatherApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<WeatherDto> fetchCurrentByCity(
+  Future<HttpResponse<WeatherDto>> fetchCurrentByCity(
     String cityName,
     String apiKey,
     String lang,
@@ -33,7 +35,7 @@ class _WeatherApi implements WeatherApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<WeatherDto>(
+    final _options = _setStreamType<HttpResponse<WeatherDto>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -51,11 +53,12 @@ class _WeatherApi implements WeatherApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<WeatherDto> fetchCurrentByLocation(
+  Future<HttpResponse<WeatherDto>> fetchCurrentByLocation(
     double lat,
     double lon,
     String apiKey,
@@ -72,7 +75,7 @@ class _WeatherApi implements WeatherApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<WeatherDto>(
+    final _options = _setStreamType<HttpResponse<WeatherDto>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -90,11 +93,12 @@ class _WeatherApi implements WeatherApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ForecastResponseDto> fetchForecast(
+  Future<HttpResponse<ForecastResponseDto>> fetchForecast(
     String cityName,
     String apiKey,
     String lang,
@@ -109,7 +113,7 @@ class _WeatherApi implements WeatherApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ForecastResponseDto>(
+    final _options = _setStreamType<HttpResponse<ForecastResponseDto>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -127,11 +131,12 @@ class _WeatherApi implements WeatherApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   @override
-  Future<ForecastResponseDto> fetchForecastByLocation(
+  Future<HttpResponse<ForecastResponseDto>> fetchForecastByLocation(
     double lat,
     double lon,
     String apiKey,
@@ -148,7 +153,7 @@ class _WeatherApi implements WeatherApi {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ForecastResponseDto>(
+    final _options = _setStreamType<HttpResponse<ForecastResponseDto>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -166,7 +171,8 @@ class _WeatherApi implements WeatherApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    return _value;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
@@ -196,3 +202,5 @@ class _WeatherApi implements WeatherApi {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// dart format on

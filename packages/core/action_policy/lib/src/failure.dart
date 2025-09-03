@@ -14,6 +14,9 @@ class NetworkFailure extends Failure {
   final NetFailure cause;
 
   const NetworkFailure(this.cause);
+
+  @override
+  String toString() => 'NetworkFailure(cause=$cause)';
 }
 
 class BizFailure extends Failure {

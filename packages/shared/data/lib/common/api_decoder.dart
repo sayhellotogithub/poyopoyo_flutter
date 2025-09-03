@@ -5,6 +5,7 @@
 // -------------------------------------------------------------------
 import 'dart:convert';
 
+import 'package:action_policy/action_policy.dart';
 import 'package:domain/domain.dart';
 import 'package:network_core/core.dart';
 
@@ -27,7 +28,7 @@ AppResult<T> decodeEnvelopeBytes<T>(
       } catch (_) {
         body = null;
       }
-      return classifyEnvelope<T>(
+      return classifyEnvelopeSmart<T>(
         status,
         body,
         mapData: (j) => fromData(Map<String, dynamic>.from(j as Map)),
@@ -42,7 +43,7 @@ AppResult<T> decodeEnvelopeBody<T>(
   T Function(Map<String, dynamic> json) fromData,
 ) {
   return res.fold(
-    (ok) => classifyEnvelope<T>(
+    (ok) => classifyEnvelopeSmart<T>(
       ok.status,
       ok.bytes,
       mapData: (j) => fromData(Map<String, dynamic>.from(j as Map)),

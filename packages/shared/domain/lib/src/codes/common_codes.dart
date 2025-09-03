@@ -3,14 +3,12 @@
 // Date: 2025/08/13
 // Description:
 // -------------------------------------------------------------------
-import 'package:domain/src/codes/payment_codes.dart';
 
-import 'auth_codes.dart';
 
-enum BizCategory { auth, payment, general }
 
-class BizCodes {
-  // —— 通用 ——
+import 'package:action_policy/action_policy.dart';
+
+class CommonCodes {
   static const String businessError = 'BUSINESS_ERROR';
   static const String malformedData = 'MALFORMED_DATA';
   static const String validation = 'VALIDATION_FAILED';
@@ -19,6 +17,9 @@ class BizCodes {
   static const String rateLimited = 'RATE_LIMITED';
   static const String serverBusy = 'SERVER_BUSY';
   static const String maintenance = 'MAINTENANCE';
+  static const String unknown = 'UNKNOWN';
+  static const String unauthorized = 'AUTH_UNAUTHORIZED';
+
 
   // —— 别名大表（合并各域）——
   static final Map<String, String> _aliases = {
@@ -31,15 +32,14 @@ class BizCodes {
     'SERVER_BUSY': serverBusy,
     'MAINTAINING': maintenance,
 
-    // 各领域（展开引入）
-    ...kAuthAliases,
-    ...kPaymentAliases,
+    // // 各领域（展开引入）
+    // ...kAuthAliases,
   };
 
   /// 根据 HTTP 状态提供默认业务码（当后端没给 code 时）
   static String? fromHttpStatus(int status) {
     return switch (status) {
-      401 => AuthCodes.unauthorized,
+      401 => unauthorized,
       404 => notFound,
       409 => conflict,
       422 => validation,
@@ -60,40 +60,28 @@ class BizCodes {
       key = key.toUpperCase().replaceAll(RegExp(r'^(ERR_|ERROR_|E)'), '');
     }
     key = key.toUpperCase().replaceAll('-', '_');
-    return _aliases[key] ?? key; // 未命中别名则原样（但已大写）
+    return _aliases[key] ?? key;
   }
 
   /// 分类：返回该 code 的业务类别
   static BizCategory categoryOf(String code) {
     final c = code.toUpperCase();
-    if ({
-      AuthCodes.unauthorized,
-      AuthCodes.invalidCredentials,
-      AuthCodes.accountLocked,
-      AuthCodes.passwordExpired,
-      AuthCodes.tokenExpired,
-      AuthCodes.refreshExpired,
-      AuthCodes.tokenRevoked,
-      AuthCodes.invalidClient,
-      AuthCodes.invalidGrant,
-      AuthCodes.invalidScope,
-      AuthCodes.accessDenied,
-      AuthCodes.consentRequired,
-      AuthCodes.mfaRequired,
-      AuthCodes.kycRequired,
-    }.contains(c)) return BizCategory.auth;
-
-    if ({
-      PaymentCodes.cardDeclined,
-      PaymentCodes.insufficientFunds,
-      PaymentCodes.threeDSRequired,
-      PaymentCodes.verificationRequired,
-      PaymentCodes.duplicateTxn,
-      PaymentCodes.currencyUnsupported,
-      PaymentCodes.limitExceeded,
-      PaymentCodes.gatewayTimeout,
-      PaymentCodes.providerDown,
-    }.contains(c)) return BizCategory.payment;
+    // if ({
+    //   AuthCodes.unauthorized,
+    //   AuthCodes.invalidCredentials,
+    //   AuthCodes.accountLocked,
+    //   AuthCodes.passwordExpired,
+    //   AuthCodes.tokenExpired,
+    //   AuthCodes.refreshExpired,
+    //   AuthCodes.tokenRevoked,
+    //   AuthCodes.invalidClient,
+    //   AuthCodes.invalidGrant,
+    //   AuthCodes.invalidScope,
+    //   AuthCodes.accessDenied,
+    //   AuthCodes.consentRequired,
+    //   AuthCodes.mfaRequired,
+    //   AuthCodes.kycRequired,
+    // }.contains(c)) return BizCategory.auth;
 
     return BizCategory.general;
   }
@@ -104,8 +92,6 @@ class BizCodes {
     return {
       rateLimited,
       serverBusy,
-      PaymentCodes.gatewayTimeout,
-      PaymentCodes.providerDown,
     }.contains(c);
   }
 }

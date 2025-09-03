@@ -14,5 +14,7 @@ ForecastResponseDto _$ForecastResponseDtoFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ForecastResponseDtoToJson(
-  ForecastResponseDto instance,
-) => <String, dynamic>{'list': instance.list};
+        ForecastResponseDto instance) =>
+    <String, dynamic>{
+      'list': instance.list,
+    };

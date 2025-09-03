@@ -63,15 +63,13 @@ import 'weather_localizations_ja.dart';
 /// property.
 abstract class WeatherLocalizations {
   WeatherLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static WeatherLocalizations? of(BuildContext context) {
     return Localizations.of<WeatherLocalizations>(
-      context,
-      WeatherLocalizations,
-    );
+        context, WeatherLocalizations);
   }
 
   static const LocalizationsDelegate<WeatherLocalizations> delegate =
@@ -89,16 +87,16 @@ abstract class WeatherLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ja'),
-    Locale('en'),
+    Locale('en')
   ];
 
   /// No description provided for @weather_appTitle.
@@ -173,6 +171,12 @@ abstract class WeatherLocalizations {
   /// **'City not found'**
   String get weather_cityNotFound;
 
+  /// No description provided for @weather_showErrorTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather Error Test'**
+  String get weather_showErrorTest;
+
   /// No description provided for @weather_searchHint.
   ///
   /// In en, this message translates to:
@@ -211,8 +215,7 @@ class _WeatherLocalizationsDelegate
   @override
   Future<WeatherLocalizations> load(Locale locale) {
     return SynchronousFuture<WeatherLocalizations>(
-      lookupWeatherLocalizations(locale),
-    );
+        lookupWeatherLocalizations(locale));
   }
 
   @override
@@ -233,9 +236,8 @@ WeatherLocalizations lookupWeatherLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-    'WeatherLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'WeatherLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

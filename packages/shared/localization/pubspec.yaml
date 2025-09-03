@@ -10,5 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  network_failure_i18n:
+    path: ../../network/net_i18n
+  business_failure_i18n:
+    path: ../../shared/business_failure_i18n
+  action_policy:
+    path: ../../core/action_policy
+  flutter_riverpod: ^2.6.1
 dev_dependencies:
   test: any

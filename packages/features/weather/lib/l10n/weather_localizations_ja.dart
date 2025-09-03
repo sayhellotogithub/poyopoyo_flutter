@@ -45,6 +45,9 @@ class WeatherLocalizationsJa extends WeatherLocalizations {
   String get weather_cityNotFound => '都市が見つかりませんでした';
 
   @override
+  String get weather_showErrorTest => '気象誤差テスト';
+
+  @override
   String get weather_searchHint => '都市を検索';
 
   @override

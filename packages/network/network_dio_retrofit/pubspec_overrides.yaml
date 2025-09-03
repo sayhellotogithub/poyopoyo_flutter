@@ -1,8 +1,12 @@
-# melos_managed_dependency_overrides: data,domain,network_core
+# melos_managed_dependency_overrides: action_policy,data,domain,network_core,network_dio
 dependency_overrides:
+  action_policy:
+    path: ../../core/action_policy
   data:
     path: ../../shared/data
   domain:
     path: ../../shared/domain
   network_core:
     path: ../core
+  network_dio:
+    path: ../network_dio

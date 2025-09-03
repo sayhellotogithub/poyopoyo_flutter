@@ -11,6 +11,8 @@ dependencies:
     path: ../../network/core
   domain:
     path: ../../shared/domain
+  action_policy:
+    path: ../../core/action_policy
 
 dev_dependencies:
   test: any

@@ -45,4 +45,9 @@ class CityDto {
       localNames: localNames,
     );
   }
+
+  @override
+  String toString() {
+    return 'CityDto{name: $name, country: $country, lat: $lat, lon: $lon, state: $state, localNames: $localNames}';
+  }
 }

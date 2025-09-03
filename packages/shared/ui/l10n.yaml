@@ -1,0 +1,8 @@
+arb_dir: lib/l10n
+output-localization-file: ui_localizations.dart
+output-class: UILocalizations
+template-arb-file: ui_en.arb
+use-deferred-loading: false
+preferred-supported-locales: [ ja, en ]
+
+

@@ -19,6 +19,8 @@ dependencies:
     path: ../../shared/data
   domain:
     path: ../../shared/domain
+  action_policy:
+    path: ../../core/action_policy
   network_dio:
     path: ../../network/network_dio
 dev_dependencies:

@@ -5,6 +5,8 @@
 // -------------------------------------------------------------------
 
 
+import 'package:domain/domain.dart';
+
 import '../../core/network/api_response.dart';
 import '../../domain/entities/weather.dart';
 import '../../domain/repositories/weather_repository.dart';
@@ -14,7 +16,7 @@ class FetchWeatherByLocationUseCase {
 
   FetchWeatherByLocationUseCase(this.repository);
 
-  Future<ApiResponse<Weather>> execute(
+  Future<AppResult<Weather>> execute(
       double lat,
     double lon, {
     String lang = 'ja',

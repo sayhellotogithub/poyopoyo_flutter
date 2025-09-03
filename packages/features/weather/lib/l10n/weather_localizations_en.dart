@@ -45,6 +45,9 @@ class WeatherLocalizationsEn extends WeatherLocalizations {
   String get weather_cityNotFound => 'City not found';
 
   @override
+  String get weather_showErrorTest => 'Weather Error Test';
+
+  @override
   String get weather_searchHint => 'Search city';
 
   @override

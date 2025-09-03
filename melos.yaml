@@ -45,3 +45,52 @@ scripts:
       melos exec -- \
         "flutter gen-l10n"
     description: "Generate localizations in all Flutter packages"
+
+  # 1) 串行跑 flutter clean，避免 startup lock
+  clean:flutter:
+    run: melos exec -c 1 --flutter -- "flutter clean"
+    description: "Run `flutter clean` sequentially to avoid Flutter startup lock"
+
+  # 2) 仅在依赖了 build_runner 的包里清缓存
+  clean:build_runner:
+    run: melos exec --depends-on build_runner -- "dart run build_runner clean"
+    description: "Clear build_runner cache only where build_runner is a dependency"
+
+  # 3) 可选：删除常见生成文件
+  clean:generated:
+    run: melos exec -- "find . -type f \\( -name \"*.g.dart\" -o -name \"*.freezed.dart\" -o -name \"*.gr.dart\" \\) -delete || true"
+    description: "Delete generated files (*.g.dart, *.freezed.dart, *.gr.dart)"
+
+  # 4) 清各包的 .dart_tool
+  clean:dart_tool:
+    run: melos exec -- "rm -rf .dart_tool"
+    description: "Remove .dart_tool in every package"
+
+  # 5) 可选：去掉各包的 pubspec.lock（下次强制解依赖）
+  clean:locks:
+    run: melos exec -- "rm -f pubspec.lock"
+    description: "Remove pubspec.lock in every package"
+
+  # 6) 清理工作区根目录缓存与锁
+  clean:top:
+    run: |
+      rm -rf .dart_tool
+      rm -f pubspec.lock
+    description: "Clean .dart_tool and pubspec.lock at workspace root"
+
+  # 7) 重新引导依赖（没有代码生成开关；6.x 里 bootstrap 不会自动 codegen）
+  bootstrap:
+    run: melos bootstrap
+    description: "Re-link workspace packages and run pub get"
+
+  # 一键全清 + 重新引导依赖（不触发代码生成）
+  clean:all:
+    run: |
+      melos run clean:flutter
+      melos run clean:build_runner
+      melos run clean:generated
+      melos run clean:dart_tool
+      melos run clean:locks
+      melos run clean:top
+      melos run bootstrap
+    description: "Nuke caches across the workspace and re-bootstrap"

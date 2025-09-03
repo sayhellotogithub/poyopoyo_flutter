@@ -1,9 +1,11 @@
-name: contracts
-description: contracts module
+name: crypto_core
+description: crypto_core module
 version: 0.0.1
 publish_to: "none"
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
 
-
+dependencies:
+  crypto: ^3.0.3            # HMAC/SHA-256
+  cryptography: ^2.5.0      # Ed25519 署名
