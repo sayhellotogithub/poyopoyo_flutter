@@ -1,0 +1,8 @@
+arb_dir: lib/l10n
+output-localization-file: error_lab_localizations.dart
+output-class: ErrorLabLocalizations
+template-arb-file: error_lab_en.arb
+use-deferred-loading: false
+preferred-supported-locales: [ ja, en ]
+
+

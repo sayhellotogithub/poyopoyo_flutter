@@ -18,5 +18,6 @@ dependencies:
   action_policy:
     path: ../../core/action_policy
 
+
 flutter:
   generate: true

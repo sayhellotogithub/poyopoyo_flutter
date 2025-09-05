@@ -5,6 +5,7 @@ import 'package:auth/presentation/router/auth_module.dart';
 import 'package:di/action_policy_providers.dart';
 import 'package:di/bootstrap.dart';
 import 'package:error_lab/error_lab.dart';
+import 'package:error_lab/l10n/error_lab_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -18,12 +19,15 @@ import 'package:theme/app_theme.dart';
 import 'package:theme/theme_provider.dart';
 import 'package:ui/ui.dart';
 
+import 'bootstrap/biz_i18n_bootstrap.dart';
+
 class PoyopoyoApp extends ConsumerWidget {
   const PoyopoyoApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeModeAsync = ref.watch(themeModeProvider);
+    setupBusinessI18n(ref);
 
     return themeModeAsync.when(
       loading: () => const MaterialApp(home: SizedBox.shrink()),
@@ -81,6 +85,7 @@ class PoyopoyoApp extends ConsumerWidget {
                 ...NetworkFailureLocalizations.localizationsDelegates,
                 AuthLocalizations.delegate,
                 WeatherLocalizations.delegate,
+                ErrorLabLocalizations.delegate,
               ]),
         );
       },

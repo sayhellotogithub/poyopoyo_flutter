@@ -58,6 +58,16 @@ class NetworkFailureLocalizer {
         return locale.http_other(info.httpStatus ?? 0);
       case NetErrCode.unknown:
         return locale.net_unknown;
+      case NetErrCode.badResponse:
+        return locale.net_bad_response;
+      case NetErrCode.tooManyRequests:
+        return locale.http_429;
+      case NetErrCode.notFound:
+        return locale.http_404;
+      case NetErrCode.forbidden:
+        return locale.http_403;
+      default:
+        return locale.net_unknown;
     }
   }
 }

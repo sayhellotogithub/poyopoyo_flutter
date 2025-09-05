@@ -15,7 +15,7 @@ final settingPath = "/setting";
 final weatherDetailPath = "/weatherDetail";
 
 List<GoRoute> routers = [
-  GoRoute(path: '/', builder: (context, state) => HomeScreen()),
+  // GoRoute(path: '/', builder: (context, state) => HomeScreen()),
   GoRouteX.custom(path: settingPath, builder: (_, __) => SettingsScreen()),
   GoRouteX.custom(
     path: weatherDetailPath,

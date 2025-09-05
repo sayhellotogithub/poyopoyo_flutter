@@ -11,10 +11,7 @@ import 'common_codes.dart';
 const Set<int> kDefaultRetryableHttpStatuses = {429, 502, 503, 504};
 
 const Map<String, ErrorAction> kDirectCodeActions = {
-  // AuthCodes.invalidCredentials: ErrorAction.showForm,
-  // AuthCodes.tokenExpired: ErrorAction.reauth,
-  // AuthCodes.tokenRevoked: ErrorAction.reauth,
-  // AuthCodes.unauthorized: ErrorAction.reauth,
+
 
   CommonCodes.serverBusy: ErrorAction.retry,
   CommonCodes.rateLimited: ErrorAction.retry,

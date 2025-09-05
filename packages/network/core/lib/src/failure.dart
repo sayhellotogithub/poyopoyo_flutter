@@ -19,6 +19,14 @@ class NetNoConnection extends NetFailure {
   const NetNoConnection();
 }
 
+class NetTls extends NetFailure {
+  const NetTls();
+}
+
+class NetDns extends NetFailure {
+  const NetDns();
+}
+
 class NetUnauthorized extends NetFailure {
   const NetUnauthorized();
 }

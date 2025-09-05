@@ -117,11 +117,14 @@ ActionDecision _decideNetwork(
       return ActionDecision(
           ErrorAction.retry, DecisionReason.networkRetryableStatus,
           httpStatus: info.httpStatus);
-
+    case NetErrCode.badResponse:
     case NetErrCode.tls:
     case NetErrCode.dns:
     case NetErrCode.httpOther:
     case NetErrCode.unknown:
+      return const ActionDecision(
+          ErrorAction.showDialog, DecisionReason.fallback);
+    default:
       return const ActionDecision(
           ErrorAction.showDialog, DecisionReason.fallback);
   }
