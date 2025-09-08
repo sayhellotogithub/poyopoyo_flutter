@@ -9,15 +9,13 @@ class AuthLocalizationsJa extends AuthLocalizations {
   AuthLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get auth_token_expired =>
-      'Your session has expired. Please sign in again.';
+  String get auth_token_expired => 'セッションの有効期限が切れました。再度サインインしてください。';
 
   @override
-  String get auth_kyc_required =>
-      'Please complete identity verification (KYC).';
+  String get auth_kyc_required => '本人確認（KYC）を完了してください。';
 
   @override
   String auth_user_blocked(int days) {
-    return 'Your account is suspended for $days day(s).';
+    return 'あなたのアカウントは $days 日間停止されています。';
   }
 }
