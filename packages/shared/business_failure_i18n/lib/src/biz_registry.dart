@@ -20,6 +20,8 @@ class BizFailureRegistry implements IBizFailureRegistry {
 
   final Map<String, BizFormatter> _formatters = {};
 
+  Map<String, BizFormatter> get formatters => _formatters;
+
   @override
   void register(String code, BizFormatter formatter) {
     if (!allowOverride) {

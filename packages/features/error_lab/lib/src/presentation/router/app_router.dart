@@ -6,6 +6,7 @@
 import 'package:error_lab/src/presentation/screens/error_network_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../screens/error_business_screen.dart';
 import '../screens/error_lab_home_screen.dart';
 
 final errorLabHomePath = "/errorLabHome";
@@ -18,5 +19,5 @@ List<GoRoute> routeList = [
       path: networkFailurePath,
       builder: (context, state) => ErrorNetworkScreen()),
   GoRoute(path: businessFailurePath,
-      builder: (context, state) => ErrorLabHomeScreen())
+      builder: (context, state) => ErrorBusinessScreen())
 ];

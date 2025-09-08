@@ -2,6 +2,7 @@
 import 'package:action_policy/action_policy.dart';
 import 'package:auth/l10n/auth_localizations.dart';
 import 'package:auth/presentation/router/auth_module.dart';
+import 'package:business_failure_i18n/l10n/business_failure_localizations.dart';
 import 'package:di/action_policy_providers.dart';
 import 'package:di/bootstrap.dart';
 import 'package:error_lab/error_lab.dart';
@@ -27,7 +28,6 @@ class PoyopoyoApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeModeAsync = ref.watch(themeModeProvider);
-    setupBusinessI18n(ref);
 
     return themeModeAsync.when(
       loading: () => const MaterialApp(home: SizedBox.shrink()),
@@ -44,7 +44,7 @@ class PoyopoyoApp extends ConsumerWidget {
         final bootstrapResult =
             bootstrap.build(actionPolicyBuilder: actionPolicyReg);
         final locale = ref.watch(localeProvider);
-
+        setupBusinessI18n(ref);
         return ProviderScope(
           overrides: [
             ...bootstrapResult.overrides,
@@ -86,6 +86,7 @@ class PoyopoyoApp extends ConsumerWidget {
                 AuthLocalizations.delegate,
                 WeatherLocalizations.delegate,
                 ErrorLabLocalizations.delegate,
+                BusinessFailureLocalizations.delegate,
               ]),
         );
       },

@@ -1,7 +1,13 @@
 {
   "@@locale": "ja",
-
-  "token_expired": "Token expired.",
-  "kyc_required": "Kyc required.",
-  "user_blocked": "User blocked."
+  "auth_token_expired": "セッションの有効期限が切れました。再度サインインしてください。",
+  "auth_kyc_required": "本人確認（KYC）を完了してください。",
+  "auth_user_blocked": "あなたのアカウントは {days} 日間停止されています。",
+  "@auth_user_blocked": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  }
 }
