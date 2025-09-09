@@ -2,5 +2,13 @@
   "@@locale": "en",
   "ui_error": "Error",
   "ui_retry": "Retry",
-  "ui_ok": "OK"
+  "ui_ok": "OK",
+  "dialog_error_title": "Error",
+  "dialog_close": "Close",
+  "dialog_retry": "Retry",
+  "dialog_show_details": "Show details",
+  "dialog_hide_details": "Hide details",
+  "dialog_copy": "Copy",
+  "dialog_copy_success": "Copied",
+  "dialog_copy_error": "Copy failed"
 }

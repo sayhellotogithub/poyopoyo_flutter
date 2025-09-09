@@ -5,24 +5,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'ui_localizations_en.dart';
-import 'ui_localizations_ja.dart';
+import 'login_localizations_en.dart';
+import 'login_localizations_ja.dart';
 
 // ignore_for_file: type=lint
 
-/// Callers can lookup localized strings with an instance of UILocalizations
-/// returned by `UILocalizations.of(context)`.
+/// Callers can lookup localized strings with an instance of LoginLocalizations
+/// returned by `LoginLocalizations.of(context)`.
 ///
-/// Applications need to include `UILocalizations.delegate()` in their app's
+/// Applications need to include `LoginLocalizations.delegate()` in their app's
 /// `localizationDelegates` list, and the locales they support in the app's
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/ui_localizations.dart';
+/// import 'l10n/login_localizations.dart';
 ///
 /// return MaterialApp(
-///   localizationsDelegates: UILocalizations.localizationsDelegates,
-///   supportedLocales: UILocalizations.supportedLocales,
+///   localizationsDelegates: LoginLocalizations.localizationsDelegates,
+///   supportedLocales: LoginLocalizations.supportedLocales,
 ///   home: MyApplicationHome(),
 /// );
 /// ```
@@ -59,20 +59,20 @@ import 'ui_localizations_ja.dart';
 /// Select and expand the newly-created Localizations item then, for each
 /// locale your application supports, add a new item and select the locale
 /// you wish to add from the pop-up menu in the Value field. This list should
-/// be consistent with the languages listed in the UILocalizations.supportedLocales
+/// be consistent with the languages listed in the LoginLocalizations.supportedLocales
 /// property.
-abstract class UILocalizations {
-  UILocalizations(String locale)
+abstract class LoginLocalizations {
+  LoginLocalizations(String locale)
       : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static UILocalizations? of(BuildContext context) {
-    return Localizations.of<UILocalizations>(context, UILocalizations);
+  static LoginLocalizations? of(BuildContext context) {
+    return Localizations.of<LoginLocalizations>(context, LoginLocalizations);
   }
 
-  static const LocalizationsDelegate<UILocalizations> delegate =
-      _UILocalizationsDelegate();
+  static const LocalizationsDelegate<LoginLocalizations> delegate =
+      _LoginLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -97,80 +97,16 @@ abstract class UILocalizations {
     Locale('ja'),
     Locale('en')
   ];
-
-  /// No description provided for @ui_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error'**
-  String get ui_error;
-
-  /// No description provided for @ui_retry.
-  ///
-  /// In en, this message translates to:
-  /// **'Retry'**
-  String get ui_retry;
-
-  /// No description provided for @ui_ok.
-  ///
-  /// In en, this message translates to:
-  /// **'OK'**
-  String get ui_ok;
-
-  /// No description provided for @dialog_error_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Error'**
-  String get dialog_error_title;
-
-  /// No description provided for @dialog_close.
-  ///
-  /// In en, this message translates to:
-  /// **'Close'**
-  String get dialog_close;
-
-  /// No description provided for @dialog_retry.
-  ///
-  /// In en, this message translates to:
-  /// **'Retry'**
-  String get dialog_retry;
-
-  /// No description provided for @dialog_show_details.
-  ///
-  /// In en, this message translates to:
-  /// **'Show details'**
-  String get dialog_show_details;
-
-  /// No description provided for @dialog_hide_details.
-  ///
-  /// In en, this message translates to:
-  /// **'Hide details'**
-  String get dialog_hide_details;
-
-  /// No description provided for @dialog_copy.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get dialog_copy;
-
-  /// No description provided for @dialog_copy_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Copied'**
-  String get dialog_copy_success;
-
-  /// No description provided for @dialog_copy_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy failed'**
-  String get dialog_copy_error;
 }
 
-class _UILocalizationsDelegate extends LocalizationsDelegate<UILocalizations> {
-  const _UILocalizationsDelegate();
+class _LoginLocalizationsDelegate
+    extends LocalizationsDelegate<LoginLocalizations> {
+  const _LoginLocalizationsDelegate();
 
   @override
-  Future<UILocalizations> load(Locale locale) {
-    return SynchronousFuture<UILocalizations>(lookupUILocalizations(locale));
+  Future<LoginLocalizations> load(Locale locale) {
+    return SynchronousFuture<LoginLocalizations>(
+        lookupLoginLocalizations(locale));
   }
 
   @override
@@ -178,20 +114,20 @@ class _UILocalizationsDelegate extends LocalizationsDelegate<UILocalizations> {
       <String>['en', 'ja'].contains(locale.languageCode);
 
   @override
-  bool shouldReload(_UILocalizationsDelegate old) => false;
+  bool shouldReload(_LoginLocalizationsDelegate old) => false;
 }
 
-UILocalizations lookupUILocalizations(Locale locale) {
+LoginLocalizations lookupLoginLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en':
-      return UILocalizationsEn();
+      return LoginLocalizationsEn();
     case 'ja':
-      return UILocalizationsJa();
+      return LoginLocalizationsJa();
   }
 
   throw FlutterError(
-      'UILocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'LoginLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');

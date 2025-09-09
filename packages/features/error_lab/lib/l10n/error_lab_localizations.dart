@@ -104,6 +104,12 @@ abstract class ErrorLabLocalizations {
   /// In en, this message translates to:
   /// **'Network Error Code List'**
   String get error_lab_net_error_code;
+
+  /// No description provided for @error_lab_business_error_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Error Code List'**
+  String get error_lab_business_error_code;
 }
 
 class _ErrorLabLocalizationsDelegate

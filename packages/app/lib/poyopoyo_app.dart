@@ -49,25 +49,12 @@ class PoyopoyoApp extends ConsumerWidget {
           overrides: [
             ...bootstrapResult.overrides,
             actionPolicyProvider.overrideWithValue(actionPolicyReg),
-            unifiedErrorUiConfigProvider.overrideWithValue(
-              UnifiedErrorUiConfig.defaults(
-                showSnackBar: (ctx, text, {onRetry}) {
-                  ScaffoldMessenger.of(ctx).showSnackBar(
-                    SnackBar(
-                      content: Text(text),
-                      action: onRetry != null
-                          ? SnackBarAction(label: 'Retry', onPressed: onRetry)
-                          : null,
-                    ),
-                  );
-                },
-                showDialog: (ctx, text) => showDialog(
-                  context: ctx,
-                  builder: (_) => AlertDialog(content: Text(text)),
-                ),
-                go: (ctx, route) => GoRouter.of(ctx).go(route),
-              ),
-            ),
+            unifiedErrorUiConfigProvider
+                .overrideWithValue(UnifiedErrorUiConfig.defaults(
+              navigate: (context, route) => context.go(route),
+              routeConfig: const ErrorRouteConfig(),
+              handlingConfig: ErrorHandlingConfig.business(),
+            )),
           ],
           child: MaterialApp.router(
               title: 'Poyopoyo Flutter',

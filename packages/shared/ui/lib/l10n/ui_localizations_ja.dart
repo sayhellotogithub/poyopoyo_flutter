@@ -16,4 +16,28 @@ class UILocalizationsJa extends UILocalizations {
 
   @override
   String get ui_ok => 'オーケー';
+
+  @override
+  String get dialog_error_title => 'エラー';
+
+  @override
+  String get dialog_close => '閉じる';
+
+  @override
+  String get dialog_retry => '再試行';
+
+  @override
+  String get dialog_show_details => '詳細を表示';
+
+  @override
+  String get dialog_hide_details => '詳細を隠す';
+
+  @override
+  String get dialog_copy => 'コピー';
+
+  @override
+  String get dialog_copy_success => 'コピーしました';
+
+  @override
+  String get dialog_copy_error => 'コピーに失敗しました';
 }

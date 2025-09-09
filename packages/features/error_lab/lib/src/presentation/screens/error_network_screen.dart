@@ -46,9 +46,7 @@ class _ErrorNetworkScreenState extends ConsumerState<ErrorNetworkScreen> {
                 Text(failureLocalizer.net.localize(context, code.failure)),
             leading: const Icon(Icons.error_outline),
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('点击了: ${code.code.name}')),
-              );
+
             },
           );
         },

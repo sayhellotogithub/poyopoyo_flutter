@@ -1,4 +1,5 @@
 {
   "@@locale": "ja",
-  "error_lab_net_error_code": "NetErrCode リスト"
+  "error_lab_net_error_code": "NetErrCode リスト",
+  "error_lab_business_error_code": "BusinessErrCode リスト"
 }

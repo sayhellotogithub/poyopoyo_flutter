@@ -33,17 +33,17 @@ class UnifiedErrorPresenter implements IUnifiedErrorPresenter {
 
     switch (decision.action) {
       case ErrorAction.reauth:
-        config.navigateToLogin(context, '/login');
+        config.navigateToLogin(context);
         _toastLike(context, msg);
         break;
       case ErrorAction.navigateKyc:
-        config.navigateToKyc(context, '/kyc');
+        config.navigateToKyc(context);
         _toastLike(context, msg);
         break;
       default:
-        final h = config.actionHandlers[decision.action] ??
-            config.actionHandlers[ErrorAction.showDialog]!;
-        h(context, msg, onRetry: onRetry);
+        final h = config.getHandler(decision.action) ??
+            config.getHandler(ErrorAction.showDialog);
+        h?.call(context, msg, onRetry: onRetry);
         break;
     }
   }
@@ -61,8 +61,8 @@ class UnifiedErrorPresenter implements IUnifiedErrorPresenter {
   }
 
   void _toastLike(BuildContext ctx, String text) {
-    final h = config.actionHandlers[ErrorAction.showToast] ??
-        config.actionHandlers[ErrorAction.showDialog]!;
-    h(ctx, text);
+    final h = config.getHandler(ErrorAction.showToast) ??
+        config.getHandler(ErrorAction.showDialog);
+    h?.call(ctx, text);
   }
 }

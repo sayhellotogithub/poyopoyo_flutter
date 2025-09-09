@@ -10,4 +10,7 @@ class ErrorLabLocalizationsEn extends ErrorLabLocalizations {
 
   @override
   String get error_lab_net_error_code => 'Network Error Code List';
+
+  @override
+  String get error_lab_business_error_code => 'Business Error Code List';
 }
