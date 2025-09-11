@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:locale/locale.dart';
+import 'package:login/login.dart';
 import 'package:network_failure_i18n/l10n/network_failure_localizations.dart';
 import 'package:plugin/module_interface.dart';
 import 'package:poyopoyo_weather/l10n/weather_localizations.dart';
@@ -38,6 +39,7 @@ class PoyopoyoApp extends ConsumerWidget {
           AuthModule(),
           WeatherModule(),
           ErrorLabModule(),
+          LoginModule()
         ];
         final actionPolicyReg = ActionPolicyRegistry(allowOverride: true);
         final bootstrap = AppBootstrap(modules);
