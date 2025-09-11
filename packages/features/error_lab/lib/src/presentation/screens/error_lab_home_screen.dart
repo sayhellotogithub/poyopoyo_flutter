@@ -24,7 +24,7 @@ class ErrorLabHomeScreen extends ConsumerWidget {
         children: [
           FilledButton(
               onPressed: () {
-                context.go(networkFailurePath);
+                context.push(networkFailurePath);
               },
               child: const Text("ネットワークエラー表示")),
           const SizedBox(
@@ -32,7 +32,7 @@ class ErrorLabHomeScreen extends ConsumerWidget {
           ),
           FilledButton(
               onPressed: () {
-                context.go(businessFailurePath);
+                context.push(businessFailurePath);
               },
               child: const Text("ビジネスエラー表示")),
         ],

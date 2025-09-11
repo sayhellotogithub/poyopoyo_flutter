@@ -50,6 +50,7 @@ class _ErrorBusinessScreenState extends ConsumerState<ErrorBusinessScreen> {
                         subtitle: Text(failureLocalizer.biz
                             .localize(context, bean.failure)),
                         leading: const Icon(Icons.error_outline),
+                        trailing: Text(bean.actionDecision.action.name),
                         onTap: () {
                           UnifiedErrorPresenterX.of(ref)
                               .handle(context, bean.failure);

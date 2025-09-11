@@ -5,14 +5,17 @@
 // -------------------------------------------------------------------
 import 'package:action_policy/action_policy.dart';
 import 'package:business_failure_i18n/business_failure_i18n.dart';
+import 'package:di/action_policy_providers.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BusinessErrorBean {
   final String code;
   final BizFailure failure;
+  final ActionDecision actionDecision;
 
-  const BusinessErrorBean(this.code, this.failure);
+  const BusinessErrorBean(this.code, this.failure, this.actionDecision);
 }
 
 class BusinessErrorState {
@@ -28,9 +31,10 @@ class BusinessErrorState {
 }
 
 class BusinessErrorVM extends StateNotifier<BusinessErrorState> {
-  final Ref ref;
+  final Ref _ref;
+  final ActionPolicy _policy;
 
-  BusinessErrorVM(this.ref) : super(const BusinessErrorState());
+  BusinessErrorVM(this._ref, this._policy) : super(const BusinessErrorState());
 
   void _show() => state = state.copyWith(loading: true);
 
@@ -39,12 +43,13 @@ class BusinessErrorVM extends StateNotifier<BusinessErrorState> {
   Future<void> runScenario(BuildContext context) async {
     _show();
     Map<String, BizFormatter> formatters =
-        ref.read(bizFailureRegistryProvider).formatters;
+        _ref.read(bizFailureRegistryProvider).formatters;
     List<BusinessErrorBean> codes = [];
 
     for (var entry in formatters.entries) {
-      codes.add(BusinessErrorBean(
-          entry.key, BizFailure(code: entry.key, message: "")));
+      final failure = BizFailure(code: entry.key, message: "");
+      final decision = decideAction(failure, policy: _policy);
+      codes.add(BusinessErrorBean(entry.key, failure, decision));
     }
     state = state.copyWith(codes: codes);
     _hide();
@@ -52,6 +57,8 @@ class BusinessErrorVM extends StateNotifier<BusinessErrorState> {
 }
 
 final errorBusinessVMProvider =
-    StateNotifierProvider<BusinessErrorVM, BusinessErrorState>(
-  (ref) => BusinessErrorVM(ref),
-);
+    StateNotifierProvider.autoDispose<BusinessErrorVM, BusinessErrorState>(
+        (ref) {
+  final policy = ref.watch(actionPolicyProvider);
+  return BusinessErrorVM(ref, policy);
+},dependencies: [actionPolicyProvider]);

@@ -4,6 +4,7 @@
 // Description:
 // -------------------------------------------------------------------
 import 'package:action_policy/action_policy.dart';
+import 'package:di/action_policy_providers.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,8 +12,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class NetErrorBean {
   final NetErrCode code;
   final NetworkFailure failure;
+  final ActionDecision actionDecision;
 
-  const NetErrorBean(this.code, this.failure);
+  const NetErrorBean(this.code, this.failure, this.actionDecision);
 }
 
 class ErrorNetworkState {
@@ -28,8 +30,9 @@ class ErrorNetworkState {
 
 class ErrorNetworkVM extends StateNotifier<ErrorNetworkState> {
   final Ref ref;
+  final ActionPolicy policy;
 
-  ErrorNetworkVM(this.ref) : super(const ErrorNetworkState());
+  ErrorNetworkVM(this.ref, this.policy) : super(const ErrorNetworkState());
 
   void _show() => state = state.copyWith(loading: true);
 
@@ -39,15 +42,19 @@ class ErrorNetworkVM extends StateNotifier<ErrorNetworkState> {
     _show();
     List<NetErrorBean> codes = [];
     for (NetErrCode code in NetErrCode.values) {
-      codes.add(NetErrorBean(code, code.toFailure()));
+      codes.add(NetErrorBean(
+        code,
+        code.toFailure(),
+        decideAction(code.toFailure(), policy: policy),
+      ));
     }
 
     state = state.copyWith(loading: false, codes: [...codes]);
-    _hide();
   }
 }
 
 final errorNetworkVMProvider =
-    StateNotifierProvider<ErrorNetworkVM, ErrorNetworkState>(
-  (ref) => ErrorNetworkVM(ref),
-);
+    StateNotifierProvider.autoDispose<ErrorNetworkVM, ErrorNetworkState>((ref) {
+  final policy = ref.watch(actionPolicyProvider);
+  return ErrorNetworkVM(ref, policy);
+},dependencies: [actionPolicyProvider]);

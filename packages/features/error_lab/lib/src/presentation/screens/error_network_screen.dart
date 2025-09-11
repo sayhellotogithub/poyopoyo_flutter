@@ -21,37 +21,42 @@ class ErrorNetworkScreen extends ConsumerStatefulWidget {
 class _ErrorNetworkScreenState extends ConsumerState<ErrorNetworkScreen> {
   @override
   void initState() {
-    Future.microtask(() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(errorNetworkVMProvider.notifier).runScenario(context);
     });
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final errorNetworkState = ref.watch(errorNetworkVMProvider);
     final failureLocalizer = ref.watch(failureLocalizerProvider);
-    return Scaffold(
-      appBar: AppBar(
-          title: Text(
-              ErrorLabLocalizations.of(context)!.error_lab_net_error_code)),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16),
-        itemCount: errorNetworkState.codes.length,
-        separatorBuilder: (_, __) => const Divider(),
-        itemBuilder: (context, i) {
-          final code = errorNetworkState.codes[i];
-          return ListTile(
-            title: Text(code.code.name),
-            subtitle:
-                Text(failureLocalizer.net.localize(context, code.failure)),
-            leading: const Icon(Icons.error_outline),
-            onTap: () {
-              UnifiedErrorPresenterX.of(ref).handle(context, code.failure);
-            },
+
+    return errorNetworkState.loading
+        ? CircularProgressIndicator()
+        : Scaffold(
+            appBar: AppBar(
+                title: Text(ErrorLabLocalizations.of(context)!
+                    .error_lab_net_error_code)),
+            body: ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemCount: errorNetworkState.codes.length,
+              separatorBuilder: (_, __) => const Divider(),
+              itemBuilder: (context, i) {
+                final code = errorNetworkState.codes[i];
+                return ListTile(
+                  title: Text(code.code.name),
+                  subtitle: Text(
+                      failureLocalizer.net.localize(context, code.failure)),
+                  leading: const Icon(Icons.error_outline),
+                  trailing: Text(code.actionDecision.action.name),
+                  onTap: () {
+                    UnifiedErrorPresenterX.of(ref)
+                        .handle(context, code.failure);
+                  },
+                );
+              },
+            ),
           );
-        },
-      ),
-    );
   }
 }

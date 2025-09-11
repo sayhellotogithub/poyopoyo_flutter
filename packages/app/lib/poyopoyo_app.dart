@@ -43,15 +43,17 @@ class PoyopoyoApp extends ConsumerWidget {
           LoginModule()
         ];
         final actionPolicyReg = ActionPolicyRegistry(allowOverride: true);
+
         final bootstrap = AppBootstrap(modules);
         final bootstrapResult =
             bootstrap.build(actionPolicyBuilder: actionPolicyReg);
         final locale = ref.watch(localeProvider);
         setupBusinessI18n(ref);
+
         return ProviderScope(
           overrides: [
-            ...bootstrapResult.overrides,
             actionPolicyProvider.overrideWithValue(actionPolicyReg),
+            ...bootstrapResult.overrides,
             unifiedErrorUiConfigProvider
                 .overrideWithValue(UnifiedErrorUiConfig.defaults(
               navigate: (context, route) => context.go(route),

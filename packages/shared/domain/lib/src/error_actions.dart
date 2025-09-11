@@ -9,7 +9,7 @@ import '../domain.dart';
 
 ActionDecision decideAction(
   Failure failure, {
-  ErrorActionOverrides overrides = const ErrorActionOverrides(),
+  ErrorActionOverrides? overrides,
   Set<int> retryableStatuses = kDefaultRetryableHttpStatuses,
   ActionPolicy? policy,
 }) {
@@ -41,7 +41,7 @@ ErrorAction actionForFailure(
 /// 业务错误决策
 ActionDecision _decideBiz(
   BizFailure f, {
-  required ErrorActionOverrides overrides,
+  required ErrorActionOverrides? overrides,
   required Set<int> retryableStatuses,
   ActionPolicy? policy,
 }) {
@@ -49,7 +49,7 @@ ActionDecision _decideBiz(
   final BizCategory cat = CommonCodes.categoryOf(norm);
 
   // 0) 调用方覆盖（最高优先级）
-  final o1 = overrides.codeOverrides[norm];
+  final o1 = overrides?.codeOverrides[norm];
   if (o1 != null) {
     return ActionDecision(o1, DecisionReason.codeOverride,
         code: norm, httpStatus: f.httpStatus);
@@ -77,7 +77,7 @@ ActionDecision _decideBiz(
   }
 
   // 3) 类别级覆盖
-  final o2 = overrides.categoryOverrides[cat];
+  final o2 = overrides?.categoryOverrides[cat];
   if (o2 != null) {
     return ActionDecision(o2, DecisionReason.categoryOverride,
         code: norm, httpStatus: f.httpStatus);
