@@ -26,3 +26,33 @@ class AdditionExpression extends Expression {
   @override
   int interpret() => _left.interpret() + _right.interpret();
 }
+
+class SubtractionExpression extends Expression {
+  final Expression _left;
+  final Expression _right;
+
+  SubtractionExpression(this._left, this._right);
+
+  @override
+  int interpret() => _left.interpret() - _right.interpret();
+}
+
+class MultiplicationExpression extends Expression {
+  final Expression _left;
+  final Expression _right;
+
+  MultiplicationExpression(this._left, this._right);
+
+  @override
+  int interpret() => _left.interpret() * _right.interpret();
+}
+
+class DivisionExpression extends Expression {
+  final Expression _left;
+  final Expression _right;
+
+  DivisionExpression(this._left, this._right);
+
+  @override
+  int interpret() => _left.interpret() ~/ _right.interpret();
+}
