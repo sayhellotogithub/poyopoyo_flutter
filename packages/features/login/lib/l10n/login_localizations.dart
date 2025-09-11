@@ -97,6 +97,12 @@ abstract class LoginLocalizations {
     Locale('ja'),
     Locale('en')
   ];
+
+  /// No description provided for @login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'login'**
+  String get login_title;
 }
 
 class _LoginLocalizationsDelegate

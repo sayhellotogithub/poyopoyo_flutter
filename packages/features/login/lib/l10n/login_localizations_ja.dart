@@ -7,4 +7,7 @@ import 'login_localizations.dart';
 /// The translations for Japanese (`ja`).
 class LoginLocalizationsJa extends LoginLocalizations {
   LoginLocalizationsJa([String locale = 'ja']) : super(locale);
+
+  @override
+  String get login_title => '登録';
 }

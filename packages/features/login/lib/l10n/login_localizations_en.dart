@@ -7,4 +7,7 @@ import 'login_localizations.dart';
 /// The translations for English (`en`).
 class LoginLocalizationsEn extends LoginLocalizations {
   LoginLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get login_title => 'login';
 }

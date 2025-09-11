@@ -1,3 +1,4 @@
 {
-  "@@locale": "en"
+  "@@locale": "en",
+  "login_title": "login"
 }
