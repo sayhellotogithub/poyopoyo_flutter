@@ -3,3 +3,5 @@
 // Date: 2025/09/09
 // Description: 
 // -------------------------------------------------------------------
+
+export 'src/presentation/module/login_module.dart';
