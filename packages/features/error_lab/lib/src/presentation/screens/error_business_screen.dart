@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:localization/localiztion.dart';
+import 'package:ui/ui.dart';
 
 import '../../../l10n/error_lab_localizations.dart';
 import '../viewmodel/business_vm.dart';
@@ -50,9 +51,8 @@ class _ErrorBusinessScreenState extends ConsumerState<ErrorBusinessScreen> {
                             .localize(context, bean.failure)),
                         leading: const Icon(Icons.error_outline),
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('点击了: ${bean.code}')),
-                          );
+                          UnifiedErrorPresenterX.of(ref)
+                              .handle(context, bean.failure);
                         },
                       );
                     },

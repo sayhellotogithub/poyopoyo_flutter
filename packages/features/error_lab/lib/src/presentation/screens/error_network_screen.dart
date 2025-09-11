@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:localization/localiztion.dart';
+import 'package:ui/ui.dart';
 
 import '../../../l10n/error_lab_localizations.dart';
 import '../viewmodel/network_vm.dart';
@@ -46,7 +47,7 @@ class _ErrorNetworkScreenState extends ConsumerState<ErrorNetworkScreen> {
                 Text(failureLocalizer.net.localize(context, code.failure)),
             leading: const Icon(Icons.error_outline),
             onTap: () {
-
+              UnifiedErrorPresenterX.of(ref).handle(context, code.failure);
             },
           );
         },

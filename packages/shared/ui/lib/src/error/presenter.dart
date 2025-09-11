@@ -41,9 +41,9 @@ class UnifiedErrorPresenter implements IUnifiedErrorPresenter {
         _toastLike(context, msg);
         break;
       default:
-        final h = config.getHandler(decision.action) ??
+        final actionHandler = config.getHandler(decision.action) ??
             config.getHandler(ErrorAction.showDialog);
-        h?.call(context, msg, onRetry: onRetry);
+        actionHandler?.call(context, msg, onRetry: onRetry);
         break;
     }
   }

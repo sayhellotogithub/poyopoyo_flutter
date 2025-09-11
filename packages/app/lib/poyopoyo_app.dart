@@ -19,6 +19,7 @@ import 'package:poyopoyo_weather/weather.dart';
 import 'package:settings/presentation/router/settings_module.dart';
 import 'package:theme/app_theme.dart';
 import 'package:theme/theme_provider.dart';
+import 'package:ui/l10n/ui_localizations.dart';
 import 'package:ui/ui.dart';
 
 import 'bootstrap/biz_i18n_bootstrap.dart';
@@ -76,6 +77,7 @@ class PoyopoyoApp extends ConsumerWidget {
                 WeatherLocalizations.delegate,
                 ErrorLabLocalizations.delegate,
                 BusinessFailureLocalizations.delegate,
+                UILocalizations.delegate,
               ]),
         );
       },
