@@ -103,6 +103,12 @@ abstract class LoginLocalizations {
   /// In en, this message translates to:
   /// **'login'**
   String get login_title;
+
+  /// No description provided for @login_kyc.
+  ///
+  /// In en, this message translates to:
+  /// **'kyc'**
+  String get login_kyc;
 }
 
 class _LoginLocalizationsDelegate

@@ -1,4 +1,5 @@
 {
   "@@locale": "en",
-  "login_title": "login"
+  "login_title": "login",
+  "login_kyc": "kyc"
 }

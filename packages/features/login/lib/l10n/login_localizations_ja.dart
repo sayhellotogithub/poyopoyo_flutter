@@ -10,4 +10,7 @@ class LoginLocalizationsJa extends LoginLocalizations {
 
   @override
   String get login_title => '登録';
+
+  @override
+  String get login_kyc => 'Kyc';
 }
