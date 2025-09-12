@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:locale/locale.dart';
+import 'package:login/l10n/login_localizations.dart';
 import 'package:login/login.dart';
 import 'package:network_failure_i18n/l10n/network_failure_localizations.dart';
 import 'package:plugin/module_interface.dart';
@@ -80,6 +81,7 @@ class PoyopoyoApp extends ConsumerWidget {
                 ErrorLabLocalizations.delegate,
                 BusinessFailureLocalizations.delegate,
                 UILocalizations.delegate,
+                LoginLocalizations.delegate,
               ]),
         );
       },
