@@ -13,4 +13,25 @@ class ErrorLabLocalizationsJa extends ErrorLabLocalizations {
 
   @override
   String get error_lab_business_error_code => 'BusinessErrCode リスト';
+
+  @override
+  String get error_lab_error_action_retry_test => '再試行テスト';
+
+  @override
+  String get error_lab_error_action_reauth_test => '再認証テスト';
+
+  @override
+  String get error_lab_error_action_show_form_test => 'フォーム表示テスト';
+
+  @override
+  String get error_lab_error_action_require_3ds_test => '3DS 必須テスト';
+
+  @override
+  String get error_lab_error_action_show_dialog_test => 'ダイアログ表示テスト';
+
+  @override
+  String get error_lab_error_action_show_toast_test => 'トースト表示テスト';
+
+  @override
+  String get error_lab_error_action_navigate_kyc_test => 'KYC 画面遷移テスト';
 }

@@ -110,6 +110,48 @@ abstract class ErrorLabLocalizations {
   /// In en, this message translates to:
   /// **'Business Error Code List'**
   String get error_lab_business_error_code;
+
+  /// No description provided for @error_lab_error_action_retry_test.
+  ///
+  /// In en, this message translates to:
+  /// **'retry test'**
+  String get error_lab_error_action_retry_test;
+
+  /// No description provided for @error_lab_error_action_reauth_test.
+  ///
+  /// In en, this message translates to:
+  /// **'reauth test'**
+  String get error_lab_error_action_reauth_test;
+
+  /// No description provided for @error_lab_error_action_show_form_test.
+  ///
+  /// In en, this message translates to:
+  /// **'show form test'**
+  String get error_lab_error_action_show_form_test;
+
+  /// No description provided for @error_lab_error_action_require_3ds_test.
+  ///
+  /// In en, this message translates to:
+  /// **'require 3ds test'**
+  String get error_lab_error_action_require_3ds_test;
+
+  /// No description provided for @error_lab_error_action_show_dialog_test.
+  ///
+  /// In en, this message translates to:
+  /// **'show dialog test'**
+  String get error_lab_error_action_show_dialog_test;
+
+  /// No description provided for @error_lab_error_action_show_toast_test.
+  ///
+  /// In en, this message translates to:
+  /// **'show toast test'**
+  String get error_lab_error_action_show_toast_test;
+
+  /// No description provided for @error_lab_error_action_navigate_kyc_test.
+  ///
+  /// In en, this message translates to:
+  /// **'navigate kyc test'**
+  String get error_lab_error_action_navigate_kyc_test;
 }
 
 class _ErrorLabLocalizationsDelegate
