@@ -12,3 +12,4 @@ export 'src/codes/error_action_maps.dart';
 export 'src/codes/network_error_codes.dart';
 export 'src/codes/net_failure_extensions.dart';
 export 'src/biz_code.dart';
+export 'src/network_error_policy.dart';

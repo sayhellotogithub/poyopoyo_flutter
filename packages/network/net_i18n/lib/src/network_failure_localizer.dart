@@ -13,7 +13,7 @@ class NetworkI18nConfig {
   final Map<NetErrCode, String Function(NetworkFailureLocalizations, int?)>
       codeOverrides;
   final Map<int, String Function(NetworkFailureLocalizations)>
-      httpStatusOverrides; // 针对特定HTTP码
+      httpStatusOverrides; // Specific HTTP
   const NetworkI18nConfig({
     this.codeOverrides = const {},
     this.httpStatusOverrides = const {},

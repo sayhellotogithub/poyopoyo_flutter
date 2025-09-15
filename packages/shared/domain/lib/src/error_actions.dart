@@ -6,6 +6,7 @@
 import 'package:action_policy/action_policy.dart';
 
 import '../domain.dart';
+import 'network_error_policy.dart';
 
 ActionDecision decideAction(
   Failure failure, {
@@ -101,33 +102,7 @@ ActionDecision _decideNetwork(
   required Set<int> retryableStatuses,
 }) {
   final info = failure.info;
-
-  switch (info.code) {
-    case NetErrCode.timeout:
-    case NetErrCode.offline:
-    case NetErrCode.cancelled:
-      return const ActionDecision(
-          ErrorAction.retry, DecisionReason.networkTimeoutOrOffline);
-
-    case NetErrCode.unauthorized:
-      return const ActionDecision(
-          ErrorAction.reauth, DecisionReason.networkUnauthorized);
-
-    case NetErrCode.httpRetryable:
-      return ActionDecision(
-          ErrorAction.retry, DecisionReason.networkRetryableStatus,
-          httpStatus: info.httpStatus);
-    case NetErrCode.badResponse:
-    case NetErrCode.tls:
-    case NetErrCode.dns:
-    case NetErrCode.httpOther:
-    case NetErrCode.unknown:
-      return const ActionDecision(
-          ErrorAction.showDialog, DecisionReason.fallback);
-    default:
-      return const ActionDecision(
-          ErrorAction.showDialog, DecisionReason.fallback);
-  }
+  return NetworkErrorPolicy.decide(info);
 }
 
 /// 是否应自动重试（保留你原来的语义，但复用决策）

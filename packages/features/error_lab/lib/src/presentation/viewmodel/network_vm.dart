@@ -42,10 +42,11 @@ class ErrorNetworkVM extends StateNotifier<ErrorNetworkState> {
     _show();
     List<NetErrorBean> codes = [];
     for (NetErrCode code in NetErrCode.values) {
+      final failure = NetworkErrorPolicy.failure(code);
       codes.add(NetErrorBean(
         code,
-        code.toFailure(),
-        decideAction(code.toFailure(), policy: policy),
+        failure,
+        decideAction(failure, policy: policy),
       ));
     }
 
@@ -57,4 +58,4 @@ final errorNetworkVMProvider =
     StateNotifierProvider.autoDispose<ErrorNetworkVM, ErrorNetworkState>((ref) {
   final policy = ref.watch(actionPolicyProvider);
   return ErrorNetworkVM(ref, policy);
-},dependencies: [actionPolicyProvider]);
+}, dependencies: [actionPolicyProvider]);
