@@ -15,18 +15,10 @@ dependencies:
     path: ../../core/di
   plugin:
     path: ../../core/plugin
-  network_core:
-    path: ../../network/core
   network_failure_i18n:
     path: ../../network/net_i18n
   network_dio_retrofit:
     path: ../../network/network_dio_retrofit
-  dto:
-    path: ../../shared/dto
-  api:
-    path: ../../shared/api
-  data:
-    path: ../../shared/data
   domain:
     path: ../../shared/domain
   action_policy:
