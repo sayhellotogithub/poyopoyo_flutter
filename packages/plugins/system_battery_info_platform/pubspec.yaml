@@ -1,0 +1,19 @@
+name: system_battery_info_platform_interface
+description: Platform interface for the system_battery_info federated plugin.
+publish_to: "none"
+version: 1.0.0
+repository: https://github.com/sayhellotogithub/poyopoyo_weather
+homepage: https://github.com/sayhellotogithub/poyopoyo_weather
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: ^1.26.2
