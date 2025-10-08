@@ -1,0 +1,19 @@
+name: system_battery_info_events
+description: Event stream package for the system_battery_info federated plugin.
+publish_to: "none"
+version: 1.0.0
+repository: https://github.com/sayhellotogithub/poyopoyo_weather
+homepage: https://github.com/sayhellotogithub/poyopoyo_weather
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  system_battery_info_platform_interface:
+    path: ../system_battery_info_platform
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -12,7 +12,7 @@ class BatteryEvent {
 
   factory BatteryEvent.fromMap(Map<String, dynamic> map) {
     return BatteryEvent(
-        level: map['level'] ?? -1, isCharging: map['isCharing'] ?? false);
+        level: map['level'] ?? -1, isCharging: map['isCharging'] ?? false);
   }
 
   Map<String, dynamic> toMap() => {
