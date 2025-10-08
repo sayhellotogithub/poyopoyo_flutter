@@ -4,8 +4,8 @@
 // Description:
 // -------------------------------------------------------------------
 
-import 'package:flutter_test/flutter_test.dart';
 import 'package:system_battery_info_platform_interface/src/system_battery_info_platform.dart';
+import 'package:test/test.dart';
 
 import 'fake_system_battery_info_platform.dart';
 
