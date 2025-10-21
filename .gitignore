@@ -46,3 +46,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 pubspec.lock
+/packages/plugins/system_battery_info_events/coverage/
+/packages/plugins/system_battery_info_events/build/
