@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  crypto_core:
+    path: ../../core/crypto
   contracts:
     path: ../../core/contracts
   di:
