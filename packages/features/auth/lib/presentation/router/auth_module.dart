@@ -11,6 +11,7 @@ import 'package:plugin/module_interface.dart';
 
 import '../../data/services/auth_service_impl.dart';
 import '../../domain/policy/auth_policy_registr.dart';
+import '../routers/auth_router.dart';
 
 class AuthModule extends AppModule {
   @override
@@ -19,7 +20,7 @@ class AuthModule extends AppModule {
       ];
 
   @override
-  List<GoRoute> routes = const [];
+  List<GoRoute> routes = [...routers];
 
   @override
   void registerActionPolicy(ActionPolicyBuilder reg) {

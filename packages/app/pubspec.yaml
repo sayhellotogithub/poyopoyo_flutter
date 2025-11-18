@@ -40,8 +40,8 @@ dependencies:
   poyopoyo_weather:
     path: ../features/weather
 
-  error_lab:
-    path: ../features/error_lab
+#  error_lab:
+#    path: ../features/error_lab
   login:
     path: ../features/login
 
